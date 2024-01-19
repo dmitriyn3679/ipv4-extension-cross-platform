@@ -1,0 +1,27 @@
+@import "src/styles/utils";
+
+.menu-list {
+  //max-width: 232px;
+  height: 100%;
+  width: 232px;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
+  background-color: $menuListColor;
+  padding: 20px 24px;
+  box-sizing: border-box;
+
+  & li:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &__lang-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__lang {
+    color: $defaultColor;
+    text-transform: uppercase;
+  }
+}

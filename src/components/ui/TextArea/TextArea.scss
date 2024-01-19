@@ -1,0 +1,24 @@
+@import "src/styles/utils";
+
+.textarea {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid $borderColor;
+  border-radius: 8px;
+  padding: 18px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  @extend %placeholder;
+  color: $defaultColor;
+  resize: none;
+
+  &::placeholder {
+    @extend %placeholder;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: $secondary !important;
+    outline: none;
+  }
+}

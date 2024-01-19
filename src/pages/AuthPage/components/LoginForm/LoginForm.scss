@@ -1,0 +1,25 @@
+@import "src/styles/utils";
+
+.login {
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 28px;
+  }
+
+  &__form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+
+  &__recovery-link {
+    @extend %link;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

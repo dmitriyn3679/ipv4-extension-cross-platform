@@ -1,0 +1,7 @@
+@import "src/styles/utils";
+
+.sigh-up-hint {
+ @extend %subHeading;
+  line-height: 100%;
+  color: $defaultColor;
+}

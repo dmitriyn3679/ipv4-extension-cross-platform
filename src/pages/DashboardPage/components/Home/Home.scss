@@ -1,0 +1,30 @@
+@import "src/styles/utils";
+
+.home {
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__ip-toggle {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 100%;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 67px;
+      background-color: $borderColor;
+      margin-left: 40px;
+      margin-right: 26px;
+    }
+  }
+}

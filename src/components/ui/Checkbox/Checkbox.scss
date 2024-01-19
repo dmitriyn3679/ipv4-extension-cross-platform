@@ -1,0 +1,89 @@
+@import "src/styles/utils";
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    clip: rect(0 0 0 0);
+    &:checked + .checkbox__checked {
+      border-color: $green;
+      background-color: $green;
+      transition: background-color 0.3s;
+      path {
+        fill: #fff;
+        transition: fill 0.3s;
+      }
+    }
+  }
+
+  &__checked {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    //transition: background-color 0.3s;
+    border: 2px solid;
+    background-color: transparent;
+    border-color: $borderColor;
+    transition: border-color 0.3s linear, background-color 0.3s linear;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: $green;
+    }
+
+    &::after {
+      position: absolute;
+      content: " ";
+      width: 12px;
+      height: 2px;
+      background-color: transparent;
+      transition: background-color 0.3s;
+    }
+    &-partly {
+      &::after {
+        position: absolute;
+        content: " ";
+        width: 12px;
+        height: 2px;
+        background-color: $green;
+        transition: background-color 0.3s;
+      }
+    }
+    path {
+      fill: none;
+      transition: fill 0.3s;
+    }
+  }
+
+  &__checked-partly {
+    &::after {
+      position: absolute;
+      content: " ";
+      width: 12px;
+      height: 2px;
+      background-color: $lightGreen;
+      transition: background-color 0.3s;
+    }
+  }
+
+  &__label {
+    //@extend %label;
+    color: $defaultColor;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    // gap: 10px;
+    cursor: pointer;
+
+    font-size: 16px;
+    line-height: 100%;
+  }
+}

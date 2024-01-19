@@ -1,0 +1,80 @@
+{
+  "homePage": {
+    "label": "Главная",
+    "title": "Расширения Proxy IPv4",
+    "chooseProxy": "Выберите прокси"
+  },
+  "auth": {
+    "extensionSignIn": "Вход в расширение",
+    "extensionSignInDescription": "Чтобы использовать расширение Proxy IPv4, войдите в систему или создайте учетную запись.",
+    "extensionSignInButton": "Войдите в учетную запись",
+    "authorization": "Авторизация",
+    "registration": "Регистрация",
+    "recovery": "Восстановление доступа",
+    "recoveryInfo": "Введите адрес электронной почты, который вы указали при регистрации. Мы вышлем вам инструкции по восстановлению доступа к нему.",
+    "restore": "Востановить",
+    "signIn": "Войти",
+    "signUp": "Создать",
+    "signUpHint": "Нет учётной записи?",
+    "createAcc": "Создать учетную запись"
+  },
+  "proxies": {
+    "label": "Ваши прокси",
+    "title": "Ваши прокси",
+    "ip": "IP",
+    "proxyType": "Тип прокси",
+    "mobile": "Мобильные",
+    "noIps": {
+      "title": "Тут пока ничего нет",
+      "description": "Здесь будет отображен список IPs когда они появятся"
+    }
+  },
+  "settings": {
+    "label": "Настройки",
+    "title": "Настройки",
+    "websites": "Веб-сайты",
+    "fingerprintLabel": "Browser User-Agent",
+    "fingerprintTitle": "Change browser User-Agent:",
+    "fingerprintLink": "Reset User-Agent",
+    "timezoneLabel": "Заменить часовой пояс",
+    "timezoneInfo": "При включении функции вместо сеанса будет подменен часовой пояс, соответствующий стране прокси.",
+    "languageLabel": "Заменить язык",
+    "languageInfo": "При включении функции для сессии будет подставлен язык заголовков соответствующий стране прокси",
+    "saveButton": "Сохранить изменения",
+    "url": "URL",
+    "proxy": "Прокси",
+    "addSite": "Добавить"
+  },
+  "bug": {
+    "title": "Сообщить об ошибке",
+    "label": "Сообщить об ошибке",
+    "reportSuccessMessage": "Спасибо за ваш отзыв.",
+    "config": {
+      "version": "Версия",
+      "mode": "Режим",
+      "platform": "Платформа",
+      "browser": "Браузер",
+      "account": "Аккаунт",
+      "site": "Сайт"
+    },
+    "buttonSend": "Отправить отчет"
+  },
+  "forms": {
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "rememberLabel": "Запомнить меня",
+    "emailPlaceholder": "Введите email...",
+    "subjectPlaceholder": "Тема сообщения",
+    "passwordPlaceholder": "Введите пароль...",
+    "textAreaProblemText": "Опишите вашу проблему",
+    "invalidEmail": "Неверный адрес электронной почты",
+    "invalidMessage": "Сообщение должно быть не менее 10 символов",
+    "wrongPasswordLength": "Пароль должен быть не менее 6 символов",
+    "wrongPasswordChars": "Пароль должен содержать только латинские буквы и цифры",
+    "forgotPass": "Забыли пароль?"
+  },
+  "notifications": {
+    "error": "Something went wrong",
+    "loginError": "Неправильный адрес электронной почты или пароль!"
+  }
+}

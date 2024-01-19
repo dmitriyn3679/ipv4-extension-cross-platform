@@ -1,0 +1,21 @@
+@import "src/styles/utils";
+
+.bug {
+  width: 460px;
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 24px;
+  }
+
+  &__config {
+    &:after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      display: block;
+      background-color: $borderColor;
+      margin: 20px 0;
+    }
+  }
+}

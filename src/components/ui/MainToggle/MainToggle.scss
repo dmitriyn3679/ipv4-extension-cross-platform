@@ -1,0 +1,161 @@
+@import "src/styles/utils";
+
+.main-toggle {
+  position: relative;
+  width: 144px;
+  height: 67px;
+  border-radius: 100px;
+  border: 1px solid $borderColor;
+  cursor: pointer;
+
+  &--disabled {
+    cursor: default;
+  }
+
+  &--on .main-toggle--background {
+    opacity: 0;
+  }
+
+  &__button {
+    position: absolute;
+    display: block;
+    width: 56px;
+    height: 56px;
+    right: 82px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: right 0.3s;
+
+    &--active {
+      right: 5px;
+    }
+  }
+
+  &__icon-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $borderColor;
+    border-radius: 50%;
+
+    &--active {
+      //border-color: $lightBorderColor;
+      border-color: #EEE;
+    }
+  }
+
+  &__toggle-icon {
+    width: 20px;
+    height: 20px;
+
+    &--active {
+      path {
+        stroke: $secondary;
+      }
+    }
+  }
+
+  &__button-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 50%;
+
+    &--on {
+      border: 1.5px solid $lightBorderColor;
+      //background: linear-gradient(90deg, #EEE 0%, $defaultColor 50%);
+      background-color: $defaultColor;
+    }
+
+    &--on-hidden {
+      opacity: 0;
+    }
+
+    &--off {
+      border: 1.5px solid $borderColor;
+      background: linear-gradient(90deg, #212121 0%, #1C1C1C 100%);
+    }
+
+    &--off-hidden {
+      opacity: 0;
+    }
+  }
+
+  &__container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 100px;
+    transition: opacity 0.3s;
+
+    &-on {
+      background: linear-gradient(90deg, $lightGreen 0%, $green 100%);
+    }
+
+    &-on--hidden {
+      opacity: 0;
+    }
+
+    &-off {
+      background: linear-gradient(90deg, #141414 0%, #1C1C1C 100%);
+    }
+
+    &-off--hidden {
+      opacity: 0;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    font-family: "Gilroy", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 130%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 30px;
+      height: 16px;
+    }
+
+    &--on {
+      color: $secondary;
+      right: 18px;
+    }
+
+    &--on-hidden {
+      opacity: 0;
+    }
+
+    &--off {
+      color: $defaultColor;
+      left: 18px;
+
+      svg {
+        transform: scaleX(-1);
+      }
+    }
+
+    &--off-hidden {
+      opacity: 0;
+    }
+  }
+}

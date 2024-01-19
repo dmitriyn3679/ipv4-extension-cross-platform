@@ -1,0 +1,37 @@
+@import "src/styles/utils";
+
+.sing-in-form {
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__description {
+    @extend %subHeading;
+    color: $secondary;
+    text-align: center;
+    margin-bottom: 36px;
+    line-height: 140%;
+  }
+
+  &__button-container {
+    margin-bottom: 20px;
+  }
+
+  &__hint {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__registration-link {
+    @extend %link;
+    text-decoration: none;
+    font-size: 16px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

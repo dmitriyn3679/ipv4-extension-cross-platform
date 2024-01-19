@@ -1,0 +1,9 @@
+@import "src/styles/utils";
+
+.registration {
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 28px;
+  }
+}

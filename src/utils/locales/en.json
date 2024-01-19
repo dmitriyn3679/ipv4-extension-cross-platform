@@ -1,0 +1,81 @@
+{
+  "homePage": {
+    "label": "Home Page",
+    "title": "Extension Proxy IPv4",
+    "chooseProxy": "Choose a proxy"
+  },
+  "auth": {
+    "extensionSignIn": "Extension Sign In",
+    "extensionSignInDescription": "To use the Proxy IPv4 extension, log in or create an account",
+    "extensionSignInButton": "Sign In to Account",
+    "authorization": "Authorization",
+    "registration": "Registration",
+    "recovery": "Access recovery",
+    "recoveryInfo": "Enter the email address you provided during registration. We will send you instructions to restore access to it.",
+    "restore": "Restore",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signUpHint": "Don’t have an account?",
+    "createAcc": "Create an account"
+  },
+  "proxies": {
+    "label": "Your Proxies",
+    "title": "Your Proxies",
+    "ip": "IP",
+    "proxyType": "Proxy type",
+    "mobile": "Mobile",
+    "noIps": {
+      "title": "There is no ip",
+      "description": "There will be a list of IPs when they appear."
+    }
+  },
+  "settings": {
+    "label": "Settings",
+    "title": "Settings",
+    "websites": "Websites",
+    "fingerprintLabel": "Browser User-Agent",
+    "fingerprintTitle": "Change browser User-Agent:",
+    "fingerprintLink": "Reset User-Agent",
+    "timezoneLabel": "Substitute timezone",
+    "timezoneInfo": "When the function is enabled, the time zone corresponding to the country of the proxy will be substituted for the session",
+    "languageLabel": "Substitute language",
+    "languageInfo": "When you enable the function for the session, the language of the headers corresponding to the country of the proxy will be substituted",
+    "saveButton": "Save Changes",
+    "url": "URL",
+    "proxy": "Proxy",
+    "addSite": "Add site"
+  },
+  "bug": {
+    "title": "Report a bug",
+    "label": "Report a bug",
+    "reportSuccessMessage": "Thanks for your feedback",
+    "config": {
+      "version": "Version",
+      "mode": "Mode",
+      "platform": "Platform",
+      "browser": "Browser",
+      "account": "Account",
+      "site": "Site"
+    },
+    "buttonSend": "Send a report"
+  },
+  "forms": {
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "rememberLabel": "Remember me",
+    "emailPlaceholder": "Enter email...",
+    "subjectPlaceholder": "Enter subject...",
+    "passwordPlaceholder": "Enter password...",
+    "textAreaProblemText": "Describe your problem",
+    "invalidEmail": "Email is not valid",
+    "invalidMessage": "Message must be at least 10 characters",
+    "wrongPasswordLength": "Password must be at least 6 characters",
+    "wrongPasswordChars": "Password must contain only latin characters and digits",
+    "forgotPass": "Forgot your password?"
+  },
+  "notifications": {
+    "error": "Something went wrong",
+    "loginError": "Wrong email or password!",
+    "checkEmail": "Check your email! A notification has been sent to you!"
+  }
+}

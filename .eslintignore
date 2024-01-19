@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+coverage
+*.js
+*.d.ts
+/config
+/scripts

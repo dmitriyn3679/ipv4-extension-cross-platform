@@ -1,0 +1,55 @@
+@import "src/styles/utils";
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  min-width: 42px;
+  min-height: 24px;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid $borderColor;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &:before {
+      position: absolute;
+      content: "";
+      width: 12px;
+      height: 12px;
+      left: 4px;
+      bottom: 4px;
+      background-color: $secondary;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    &:hover:before {
+      background-color: $green;
+    }
+  }
+
+  &__input {
+    &:checked + .toggle-switch__slider {
+      border-color: $green;
+    }
+
+    &:checked + .toggle-switch__slider:before {
+      background-color: $green;
+      transform: translateX(18px);
+    }
+  }
+}

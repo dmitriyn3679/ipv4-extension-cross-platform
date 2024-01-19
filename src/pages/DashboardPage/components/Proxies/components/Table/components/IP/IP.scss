@@ -1,0 +1,39 @@
+@import "src/styles/utils";
+
+.ip {
+  display: flex;
+  align-items: center;
+
+  &__status {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: $lightGreen;
+    border-radius: 50%;
+    margin-right: 14px;
+
+    &--runningOut {
+      background-color: $red;
+    }
+  }
+
+  &__flag {
+    display: flex;
+    align-items: center;
+  }
+
+  &__ip {
+    @extend %content;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__date {
+    font-family: "Gilroy", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+    color: $gray;
+  }
+}

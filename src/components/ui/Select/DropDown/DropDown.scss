@@ -1,0 +1,38 @@
+@import "src/styles/utils";
+
+.select-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 6px;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+  background-color: $defaultBackgroundColor;
+  margin-top: 12px;
+  z-index: 1;
+
+  &__option {
+    font-family: "Gilroy", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+    color: $defaultColor;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $green;
+    }
+
+    &--selected {
+      background-color: $green;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "src/styles/utils";
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    @extend %label;
+    padding-bottom: 10px;
+  }
+
+  &__field {
+    padding: 18px;
+    background-color: transparent;
+    border: 2px solid $borderColor;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    @extend %placeholder;
+    color: $defaultColor;
+
+    &::placeholder {
+      @extend %placeholder
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: $secondary !important;
+      outline: none;
+    }
+  }
+
+  &__hint {
+    margin-top: 6px;
+    color: $lightRed;
+  }
+}

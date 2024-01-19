@@ -1,0 +1,42 @@
+@import "src/styles/utils";
+
+.settings {
+  width: 460px;
+
+  &__content {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    @extend %label;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  &__fingerprint {
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $borderColor;
+      margin: 20px 0;
+    }
+  }
+
+  &__param:not(:last-child) {
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $borderColor;
+      margin: 20px 0;
+    }
+  }
+}

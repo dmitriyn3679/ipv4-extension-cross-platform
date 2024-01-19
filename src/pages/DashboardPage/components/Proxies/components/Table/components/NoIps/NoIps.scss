@@ -1,0 +1,28 @@
+@import "src/styles/utils";
+
+.no-ips {
+  width: 100%;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__icon {
+    margin-bottom: 24px;
+
+  }
+
+  &__title {
+    font-family: "Gilroy", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    color: $defaultColor;
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    @extend %label;
+  }
+}

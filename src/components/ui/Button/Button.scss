@@ -1,0 +1,38 @@
+@import "src/styles/utils";
+
+.button {
+  width: 100%;
+  padding: 16px 32px;
+  outline: none;
+  font-family: "Gilroy", sans-serif;
+  font-size: 16px;
+  line-height: 100%;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+
+
+  &--main {
+    background-color: $green;
+    color: white;
+    font-weight: 700;
+    border-color: $green;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--secondary {
+    color: $lightGreen;
+    background-color: transparent;
+    border-color: $lightGreen;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $lightGreen;
+      color: white;
+    }
+  }
+}

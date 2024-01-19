@@ -1,0 +1,63 @@
+@import "src/styles/utils";
+
+.pagination {
+  // color: #fff !important;
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    background-color: transparent;
+
+    &:hover {
+      color: $defaultColor;
+    }
+
+    color: $secondary;
+    border: 2px solid $borderColor;
+    border-radius: 8px;
+    transition: color 0.3s, $borderColor 0.3s;
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: $defaultColor;
+
+      &[disabled] {
+        fill: $defaultColor;
+        cursor: default;
+      }
+    }
+
+    &--active {
+      border-color: $green;
+      color: $defaultColor;
+      cursor: default;
+      transition: color 0.3s, $borderColor 0.3s;
+    }
+
+    &--divider {
+      pointer-events: none;
+    }
+
+    &--prev {
+      margin-right: 1rem;
+    }
+
+    &--next {
+      margin-left: 1rem;
+    }
+  }
+}

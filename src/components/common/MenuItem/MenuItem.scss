@@ -1,0 +1,72 @@
+@import "./src/styles/utils";
+
+.menu-item {
+  cursor: pointer;
+
+  &:hover,
+  &--active {
+    .menu-item__title {
+      color: $green;
+    }
+
+    .menu-item__icon--home {
+      path {
+        stroke: $green;
+      }
+    }
+
+    .menu-item__icon--list {
+      path {
+        stroke: $green;
+      }
+      circle {
+        fill: $green;
+      }
+    }
+
+    .menu-item__icon--settings {
+      path {
+        stroke: $green;
+      }
+      circle {
+        stroke: $green;
+      }
+    }
+
+    .menu-item__icon--bug {
+      path {
+        stroke: $green;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 12px;
+  }
+
+  &__title {
+    font-family: "Gilroy", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    color: $defaultColor;
+  }
+
+  &--active {
+    font-weight: 600;
+    color: $green;
+  }
+}

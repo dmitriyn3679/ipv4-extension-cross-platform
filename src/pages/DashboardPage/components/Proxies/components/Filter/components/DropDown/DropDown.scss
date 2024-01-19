@@ -1,0 +1,30 @@
+@import "src/styles/utils";
+
+.filter-dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 12px;
+  background-color: black;
+  z-index: 3;
+  //top: 20px;
+
+  &__title {
+    @extend %label;
+    white-space: nowrap;
+    margin-bottom: 16px;
+  }
+
+  &__param {
+    @extend %content;
+    margin-bottom: 16px;
+  }
+
+  &__param:last-child {
+    margin-bottom: 0;
+  }
+
+  &__param-container {
+    display: flex;
+    align-items: center;
+  }
+}

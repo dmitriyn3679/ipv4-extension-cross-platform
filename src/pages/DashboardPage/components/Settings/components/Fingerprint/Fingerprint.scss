@@ -1,0 +1,28 @@
+@import "src/styles/utils";
+
+.fingerprint {
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    @extend %label;
+    color: $defaultColor;
+  }
+
+  &__link {
+    @extend %link;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+
+    &:hover {
+      border-color: $lightGreen;
+    }
+  }
+}

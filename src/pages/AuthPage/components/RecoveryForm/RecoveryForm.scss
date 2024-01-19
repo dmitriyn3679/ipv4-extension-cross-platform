@@ -1,0 +1,14 @@
+@import "src/styles/utils";
+
+.recovery {
+
+  &__title {
+    @extend %heading;
+    margin-bottom: 28px;
+  }
+
+  &__info {
+    @extend %label;
+    margin-bottom: 36px;
+  }
+}

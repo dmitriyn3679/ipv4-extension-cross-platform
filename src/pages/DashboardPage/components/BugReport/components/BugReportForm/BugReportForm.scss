@@ -1,0 +1,31 @@
+.bug-form {
+
+  &__container {
+    display: flex;
+    margin-bottom: 15px;
+
+    & div {
+      flex-grow: 1;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+    }
+
+    & .input {
+      max-width: 201.5px;
+    }
+  }
+
+  &__textarea {
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    display: flex;
+
+    & button {
+      flex-basis: 55%;
+    }
+  }
+}

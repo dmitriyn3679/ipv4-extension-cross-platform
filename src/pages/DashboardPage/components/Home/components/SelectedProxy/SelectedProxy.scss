@@ -1,0 +1,61 @@
+@import "src/styles/utils";
+
+.selected-proxy {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__country {
+    display: flex;
+    align-items: center;
+    font-family: "Gilroy", sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    color: $defaultColor;
+    margin-bottom: 12px;
+  }
+
+  &__ip {
+    @extend %content;
+
+    span {
+      color: $secondary;
+      margin-right: 4px;
+    }
+  }
+
+  &__unselected {
+    color: $defaultColor;
+    font-size: 18px;
+  }
+
+  &__show-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $borderColor;
+    background-color: $buttonBackground;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      border-color: $green;
+      svg path {
+        stroke: $green;
+        stroke-opacity: 1;
+      }
+    }
+  }
+
+}
