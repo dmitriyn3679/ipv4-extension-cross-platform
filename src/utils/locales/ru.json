@@ -48,7 +48,8 @@
   "bug": {
     "title": "Сообщить об ошибке",
     "label": "Сообщить об ошибке",
-    "reportSuccessMessage": "Спасибо за ваш отзыв.",
+    "reportSuccessMessage": "Ваш отчет об ошибке успешно получен",
+    "backButton": "Назад",
     "config": {
       "version": "Версия",
       "mode": "Режим",

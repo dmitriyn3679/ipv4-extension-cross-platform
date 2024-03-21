@@ -9,7 +9,7 @@ import "./BugReportForm.scss";
 import { errorToast, successToast } from "../../../../../../utils/helpers/customToast";
 import { useTranslation } from "../../../../../../hooks/useTranslation";
 
-export const BugReportForm = () => {
+export const BugReportForm = ({ openModalHandler }) => {
   const { reset, register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange"
   });
@@ -23,15 +23,16 @@ export const BugReportForm = () => {
     const { email, description, text: problem } = formData;
     
     try {
-      const { status } = await ApiService.sendReport({
-        email, description, problem
-      });
-  
-      if (status !== 200) {
-        throw new Error();
-      }
+      // const { status } = await ApiService.sendReport({
+      //   email, description, problem
+      // });
+      //
+      // if (status !== 200) {
+      //   throw new Error();
+      // }
       
-      successToast(reportSuccessMessage)
+      // successToast(reportSuccessMessage)
+      openModalHandler();
       reset();
     } catch (e) {
       errorToast("Something went wrong")

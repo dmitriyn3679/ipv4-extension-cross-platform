@@ -1,35 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { MenuItem } from "../MenuItem";
-import { changeLang, selectTranslations } from "../../../features/translation";
+import { selectTranslations } from "../../../features/translation";
 import { ApiService } from "../../../api/ApiService";
 import { errorToast } from "../../../utils/helpers/customToast";
-import { Toggle } from "../../ui/Toggle";
 import "./MenuList.scss";
 
 export const MenuList = () => {
   const [searchParams] = useSearchParams();
   const currentTab = searchParams.get("tab") || "";
-  const dispatch = useDispatch();
   const { homePage, proxies, settings, bug } = useSelector(selectTranslations);
   
   const [selectedAgent, setSelectedAgent] = useState("");
   const { selectedProxy } = useSelector((state) => state.content);
-  const { lang } = useSelector((state) => state.translation);
-  
-  const setLang = (code) => {
-    dispatch(changeLang(code))
-  };
-  
-  const handleLang = () => {
-    if (lang === "en") {
-      setLang("ru");
-
-      return;
-    }
-    setLang("en");
-  };
   
   const userAgents = {
     Default: "",
@@ -182,10 +166,6 @@ export const MenuList = () => {
           isActive={link === currentTab}
         />
       ))}
-      <li className="menu-list__lang-container">
-        <Toggle checked={lang === "en"} handleSwitch={handleLang} />
-        <span className="menu-list__lang">{lang}</span>
-      </li>
       {/*<Link to="auth">Auth</Link>*/}
       {/*<button onClick={() => setLang("en")}>en</button>*/}
       {/*<button onClick={() => setLang("ru")}>ru</button>*/}

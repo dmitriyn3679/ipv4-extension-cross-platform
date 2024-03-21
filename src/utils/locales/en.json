@@ -48,7 +48,8 @@
   "bug": {
     "title": "Report a bug",
     "label": "Report a bug",
-    "reportSuccessMessage": "Thanks for your feedback",
+    "reportSuccessMessage": "Your bug report has been successfully received",
+    "backButton": "Go back",
     "config": {
       "version": "Version",
       "mode": "Mode",

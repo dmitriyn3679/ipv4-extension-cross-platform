@@ -1,19 +1,19 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../../../components/ui/Input";
 import { Checkbox } from "../../../../components/ui/Checkbox";
 import { Button } from "../../../../components/ui/Button";
 import { SingUpHint } from "../../../../components/ui/SingUpHint/SingUpHint";
-import { moveToRegister } from "../../../../utils/helpers/authMoveFuncs";
 import { ApiService } from "../../../../api/ApiService";
 import { setIsAuthUser } from "../../../../features/auth";
 import { errorToast } from "../../../../utils/helpers/customToast";
 import { useTranslation } from "../../../../hooks/useTranslation";
+import { navigateForRegistration } from "../../../../utils/helpers/navigateForRegistration";
 import "./LoginForm.scss";
 
 export function LoginForm() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { lang } = useSelector((state) => state.translation);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { notifications, forms, auth } = useTranslation();
@@ -92,7 +92,8 @@ export function LoginForm() {
           <Button
             kind="secondary"
             text={auth.signUp}
-            handler={() => moveToRegister(searchParams, setSearchParams)}
+            // handler={() => moveToRegister(searchParams, setSearchParams)}
+            handler={() => navigateForRegistration(lang)}
           />
         </form>
       </div>

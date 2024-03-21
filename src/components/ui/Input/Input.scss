@@ -1,6 +1,7 @@
 @import "src/styles/utils";
 
 .input {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -32,5 +33,21 @@
   &__hint {
     margin-top: 6px;
     color: $lightRed;
+  }
+
+  &__input-icon {
+    position: absolute;
+    right: 24px;
+    top: 45px;
+    z-index: 9;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    path {
+      fill: $lightGreen;
+    }
   }
 }

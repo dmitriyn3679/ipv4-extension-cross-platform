@@ -6,8 +6,11 @@ import "./AddSiteModal.scss";
 import { errorToast } from "../../../../../../../../utils/helpers/customToast";
 import { ApiService } from "../../../../../../../../api/ApiService";
 import { addWebsite } from "../../../../../../../../features/content";
+import { useTranslation } from "../../../../../../../../hooks/useTranslation";
 
 export const AddSiteModal = ({ setModalIsOpen }) => {
+  const { settings: { addSite } } = useTranslation();
+  
   const { register, handleSubmit } = useForm({
     mode: "onChange"
   });
@@ -21,7 +24,7 @@ export const AddSiteModal = ({ setModalIsOpen }) => {
   const onSubmit = async (formData) => {
     const { site } = formData;
     
-    if (!site.length) {
+    if (!site.replaceAll(' ', '').length) {
       setModalIsOpen(false);
       return;
     }
@@ -42,7 +45,7 @@ export const AddSiteModal = ({ setModalIsOpen }) => {
   return (
     <div className="add-site-modal" onClick={handleClose}>
       <div className="add-site-modal__content">
-        <div className="add-site-modal__title">Add site</div>
+        <div className="add-site-modal__title">{addSite}</div>
         <form className="add-site-modal__container" onSubmit={handleSubmit(onSubmit)}>
           <Input
             name="site"

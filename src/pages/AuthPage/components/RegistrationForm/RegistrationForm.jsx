@@ -15,7 +15,7 @@ export function RegistrationForm() {
   const { auth, forms } = useTranslation();
 
   const onSubmit = () => {
-
+  
   };
 
   return (

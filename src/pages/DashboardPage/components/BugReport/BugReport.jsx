@@ -1,11 +1,18 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import { Config } from "./components/Config";
 import { BugReportForm } from "./components/BugReportForm/BugReportForm";
-import "./BugReport.scss";
 import { selectTranslations } from "../../../../features/translation";
+import { SuccessModal } from "./components/SuccessModal/SuccessModal";
+import "./BugReport.scss";
 
 export const BugReport = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { bug: { label } } = useSelector(selectTranslations);
+  
+  const openModalHandler = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="bug">
@@ -14,8 +21,9 @@ export const BugReport = () => {
         <div className="bug__config">
           <Config />
         </div>
-        <BugReportForm />
+        <BugReportForm openModalHandler={openModalHandler} />
       </div>
+      {isModalOpen && <SuccessModal handleClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

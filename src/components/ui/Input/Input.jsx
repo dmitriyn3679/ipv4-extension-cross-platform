@@ -1,10 +1,14 @@
-import "./Input.scss";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { emailPattern } from "../../../utils/emailPattern";
 import { passwordPattern } from "../../../utils/passwordPattern";
 import { selectTranslations } from "../../../features/translation";
+import "./Input.scss";
+import { IconSvg } from "../../../utils/iconSvg";
 
 export const Input = ({ register = () => {}, type, label, customize = {}, placeholder, errors, name }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  
   const {
     forms: { invalidEmail, wrongPasswordLength, wrongPasswordChars }
   } = useSelector(selectTranslations);
@@ -39,6 +43,22 @@ export const Input = ({ register = () => {}, type, label, customize = {}, placeh
     
     return validations[type] || {};
   };
+  
+  const showPasswordHandler = () => {
+    setIsPasswordVisible((current) => !current);
+  };
+  
+  const getType = () => {
+    if (type !== "password") {
+      return type;
+    }
+    
+    if (isPasswordVisible) {
+      return "text";
+    }
+    
+    return type;
+  };
 
   return (
     <div className="input" style={customize}>
@@ -46,13 +66,22 @@ export const Input = ({ register = () => {}, type, label, customize = {}, placeh
       <input
         className="input__field"
         id={type}
-        type={type}
+        type={getType()}
         placeholder={placeholder}
         {...register(name || type, getValidation())}
         autoComplete="off"
       />
       {(errors && errors[type]) && (
         <div className="input__hint">{errors[type].message}</div>
+      )}
+      {type === "password" && (
+        <div className="input__input-icon" onClick={showPasswordHandler}>
+          {isPasswordVisible ? (
+            <IconSvg tag="hiddenPas" />
+          ) : (
+            <IconSvg tag="showPas" />
+          )}
+        </div>
       )}
     </div>
   );

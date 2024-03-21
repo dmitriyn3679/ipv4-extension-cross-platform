@@ -5,3 +5,27 @@
 @import "styles/auth-form-container";
 @import "styles/dashboard-content-container";
 @import "styles/toasts";
+
+body {
+  /* width */
+  ::-webkit-scrollbar {
+    margin-left: 4px;
+    width: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

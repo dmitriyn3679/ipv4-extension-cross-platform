@@ -4,16 +4,8 @@ import { selectTranslations } from "../../../../../../features/translation";
 import "./Config.scss";
 
 export const Config = () => {
+  const { isProxyEnabled } = useSelector((state) => state.content)
   const { bug: { config } } = useSelector(selectTranslations);
-
-  const conf = {
-    version: "1.370.148",
-    mode: "disabled",
-    platform: "Win32",
-    browser: "112.0.0.0",
-    account: "Account name",
-    site: "proxy-ipv4.com"
-  };
   
   const getConfig = () => {
     const uaData = new UAParser(window.navigator.userAgent);
@@ -23,7 +15,7 @@ export const Config = () => {
     
     return {
       version: "1.0",
-      mode: "disabled",
+      mode: isProxyEnabled ? "enabled" : "disabled",
       platform: osName,
       browser: browserName,
       account: clientInfo || "undefined",

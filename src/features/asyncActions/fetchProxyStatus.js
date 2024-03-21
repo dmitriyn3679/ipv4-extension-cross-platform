@@ -4,6 +4,7 @@ import {currentBrowser} from "../../utils/currentBrowser";
 const getProxyStatus = (config) => {
   switch (currentBrowser) {
     case "chrome":
+      console.log(config)
       return config.value.mode === "pac_script";
     case "firefox":
       return config.value.proxyType === "autoConfig";

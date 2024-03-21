@@ -1,20 +1,16 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Button } from "../../../../components/ui/Button";
 import { SingUpHint } from "../../../../components/ui/SingUpHint/SingUpHint";
-import { authTypes } from "../../../../utils/authTypes";
 import { moveToLogin } from "../../../../utils/helpers/authMoveFuncs";
 import { useTranslation } from "../../../../hooks/useTranslation";
+import { navigateForRegistration } from "../../../../utils/helpers/navigateForRegistration";
 import "./SignInForm.scss";
 
 export function SignInForm() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { auth } = useTranslation();
-
-  const navigateForRegistration = () => {
-    chrome.tabs.create({
-      url: 'https://stage.proxy-ipv4.com/en/'
-    });
-  };
+  const { lang } = useSelector((state) => state.translation);
   
   return (
     <div className="auth-form-container auth-form-container--sign-in">
@@ -38,7 +34,7 @@ export function SignInForm() {
           <Link
             className="sing-in-form__registration-link"
             to="/"
-            onClick={navigateForRegistration}
+            onClick={() => navigateForRegistration(lang)}
             // to={{ search: `?type=${authTypes.registration}` }}
           >
             {auth.signUp}

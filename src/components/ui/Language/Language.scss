@@ -1,0 +1,14 @@
+@import "src/styles/utils";
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__label {
+    color: $defaultColor;
+    text-transform: uppercase;
+    position: relative;
+    top: 1px;
+  }
+}
