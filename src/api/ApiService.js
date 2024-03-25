@@ -18,7 +18,7 @@ export class ApiService {
   }
   
   static recoveryPassword(params) {
-    return $api.post('/browser-addon/v1/recoveryPasswordLink1', params)
+    return $api.post('/browser-addon/v1/recoveryPasswordLink', params)
   }
   
   static logout() {
