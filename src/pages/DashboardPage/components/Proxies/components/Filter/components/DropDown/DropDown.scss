@@ -1,6 +1,7 @@
 @import "src/styles/utils";
 
 .filter-dropdown {
+  width: 250px;
   position: absolute;
   right: 0;
   margin-top: 12px;
@@ -17,6 +18,7 @@
   &__param {
     @extend %content;
     margin-bottom: 16px;
+    flex: 0 0 50%;
   }
 
   &__param:last-child {
@@ -26,5 +28,10 @@
   &__param-container {
     display: flex;
     align-items: center;
+  }
+
+  &__ip-types {
+    display: flex;
+    flex-wrap: wrap;
   }
 }

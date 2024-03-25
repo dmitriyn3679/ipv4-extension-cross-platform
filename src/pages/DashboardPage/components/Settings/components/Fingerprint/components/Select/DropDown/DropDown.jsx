@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { classNames } from "../../../../utils/helpers/classNames";
-import { setSelectedUserAgent } from "../../../../features/settings";
-import { updateDynamicRule } from "../../../../utils/helpers/updateDynamicRule";
-import { USER_AGENT_RULE_ID } from "../../../../utils/helpers/ruleIds";
+import { classNames } from "../../../../../../../../../utils/helpers/classNames";
+import { setSelectedUserAgent } from "../../../../../../../../../features/settings";
+import { updateDynamicRule } from "../../../../../../../../../utils/helpers/updateDynamicRule";
+import { USER_AGENT_RULE_ID } from "../../../../../../../../../utils/helpers/ruleIds";
 import "./DropDown.scss";
 
 export const DropDown = ({ userAgentParams, setIsOpen }) => {

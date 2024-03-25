@@ -23,6 +23,16 @@
     margin-bottom: 12px;
   }
 
+  &__country-label {
+    display: flex;
+    align-items: center;
+
+    span {
+      position: relative;
+      top: 1px;
+    }
+  }
+
   &__ip {
     @extend %content;
 

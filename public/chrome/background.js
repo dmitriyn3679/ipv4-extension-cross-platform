@@ -1,11 +1,20 @@
 let proxyUsername = "";
 let proxyPassword = "";
 
-chrome.action.setIcon({
-  'path': {
-    '16': './assets/favicons/favicon-16x16-light-gray.png',
-    '32': './assets/favicons/favicon-32x32-light-gray.png'
-  }
+// chrome.action.setIcon({
+//   'path': {
+//     '16': './assets/favicons/favicon-16x16-light-gray.png',
+//     '32': './assets/favicons/favicon-32x32-light-gray.png'
+//   }
+// });
+
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.action.setIcon({
+    'path': {
+      '16': './assets/favicons/favicon-16x16-light-gray.png',
+      '32': './assets/favicons/favicon-32x32-light-gray.png'
+    }
+  });
 });
 
 // function setProxy(ip, port, ignoredHosts) {
@@ -48,6 +57,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         '32': './assets/favicons/favicon-32x32-light.png'
       }
     });
+  
+    chrome.storage.local.set({ isProxyConfigEnabled: true })
   }
   if (request.type === "remove_proxy") {
     chrome.action.setIcon({
@@ -56,6 +67,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         '32': './assets/favicons/favicon-32x32-light-gray.png'
       }
     });
+  
+    chrome.storage.local.set({ isProxyConfigEnabled: false })
     clearProxy();
   }
 });

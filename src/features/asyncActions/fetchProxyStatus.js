@@ -1,13 +1,14 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {currentBrowser} from "../../utils/currentBrowser";
 
-const getProxyStatus = (config) => {
+const getProxyStatus = async (config) => {
+  const proxySettings = await chrome.storage.local.get('isProxyConfigEnabled')
+  
   switch (currentBrowser) {
     case "chrome":
-      console.log(config)
-      return config.value.mode === "pac_script";
+      return config.value.mode === "pac_script" && proxySettings?.isProxyConfigEnabled;
     case "firefox":
-      return config.value.proxyType === "autoConfig";
+      return config.value.proxyType === "autoConfig" && proxySettings?.isProxyConfigEnabled;
   }
 };
 

@@ -60,4 +60,8 @@ export class ApiService {
   static getHostsById = (params) => {
     return $api.post('/browser-addon/v1/websites/config/get/enabled/byIds', params)
   };
+  
+  static getFilterCountries = () => {
+    return $api.get('/browser-addon/v1/find/ip/filter/date')
+  };
 }

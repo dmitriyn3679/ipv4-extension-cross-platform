@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { IconSvg } from "../../../utils/iconSvg";
+import { IconSvg } from "../../../../../../../../utils/iconSvg";
 import { DropDown } from "./DropDown";
-import { classNames } from "../../../utils/helpers/classNames";
+import { classNames } from "../../../../../../../../utils/helpers/classNames";
 import "./Select.scss";
-import { ApiService } from "../../../api/ApiService";
-import { errorToast } from "../../../utils/helpers/customToast";
+import { ApiService } from "../../../../../../../../api/ApiService";
+import { errorToast } from "../../../../../../../../utils/helpers/customToast";
 
 export const Select = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   const [userAgentParams, setUserAgentParams] = useState();
   const { selectedUserAgentParams } = useSelector((state) => state.settings);
-  
-  console.log(selectedUserAgentParams)
   
   useEffect(() => {
     (async () => {

@@ -23,7 +23,9 @@
     "title": "Your Proxies",
     "ip": "IP",
     "proxyType": "Proxy type",
+    "country": "Country",
     "mobile": "Mobile",
+    "all": "All",
     "noIps": {
       "title": "There is no ip",
       "description": "There will be a list of IPs when they appear."

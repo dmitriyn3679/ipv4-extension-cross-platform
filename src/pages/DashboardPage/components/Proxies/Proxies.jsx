@@ -21,8 +21,13 @@ export const Proxies = () => {
   const [dataCount, setDataCount] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, size: ITEMS_PER_PAGE })
   const [selectedTypes, setSelectedTypes] = useState(initialSelectedTypes);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   
   useEffect(() => {
+    const countryCode = selectedCountry ? {
+      country: selectedCountry?.code
+    } : {};
+    
     (async () => {
       setIsLoading(true);
       try {
@@ -32,7 +37,9 @@ export const Proxies = () => {
           {
             page: pagination.page - 1,
             size: pagination.size,
-            params: { proxyType: selectedTypes }
+            params: {
+              proxyType: selectedTypes, ...countryCode
+            }
           }
         );
         
@@ -51,7 +58,7 @@ export const Proxies = () => {
         setIsLoading(false);
       }
     })()
-  }, [pagination.size, pagination.page, selectedTypes]);
+  }, [pagination.size, pagination.page, selectedTypes, selectedCountry]);
   
   const handlePageChange = (page) => {
     setPagination((current) => {
@@ -70,6 +77,8 @@ export const Proxies = () => {
         <Filter
           setSelectedTypes={setSelectedTypes}
           selectedTypes={selectedTypes}
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
         />
       </div>
       <div className={classNames(

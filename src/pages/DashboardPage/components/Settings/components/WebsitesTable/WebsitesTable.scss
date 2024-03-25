@@ -62,17 +62,22 @@
     border-radius: 8px;
     transition: 0.3s;
 
-    &:disabled {
-      cursor: default;
+    path {
+      fill: $green;
+    }
+
+    &:not(:disabled) {
+      path {
+        fill-opacity: 1;
+      }
     }
 
     &:not(:disabled):hover {
       border-color: $green;
+    }
 
-      path {
-        fill: $green;
-        fill-opacity: 1;
-      }
+    &:disabled {
+      cursor: default;
     }
   }
 

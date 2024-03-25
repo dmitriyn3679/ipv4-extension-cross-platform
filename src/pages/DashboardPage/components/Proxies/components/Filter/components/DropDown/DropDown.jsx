@@ -4,9 +4,19 @@ import { Checkbox } from "../../../../../../../../components/ui/Checkbox";
 // eslint-disable-next-line max-len
 import { selectTranslations } from "../../../../../../../../features/translation";
 import "./DropDown.scss";
+import { Select } from "../Select";
 
-export const DropDown = ({ setIsOpen, setSelectedTypes, selectedTypes }) => {
-  const { proxies: { proxyType, mobile } } = useSelector(selectTranslations);
+export const DropDown = (
+  {
+    setIsOpen,
+    setSelectedTypes,
+    selectedTypes,
+    countries,
+    selectedCountry,
+    setSelectedCountry
+  }
+) => {
+  const { proxies: { proxyType, country } } = useSelector(selectTranslations);
   
   const proxyTypes = [
     { value: "IPv4", code: "IPv4" },
@@ -17,7 +27,9 @@ export const DropDown = ({ setIsOpen, setSelectedTypes, selectedTypes }) => {
 
   useEffect(() => {
     const closeMenu = ({ target }) => {
-      if (!target.closest(".filter")) {
+      const filterEl = document.querySelector(".filter");
+      // if (!target.closest(".filter")) {
+      if (!filterEl.contains(target)) {
         setIsOpen(false);
       }
     };
@@ -43,7 +55,7 @@ export const DropDown = ({ setIsOpen, setSelectedTypes, selectedTypes }) => {
         {proxyType}
       </div>
       <div className="filter-dropdown__params">
-        <ul>
+        <ul className="filter-dropdown__ip-types">
           {proxyTypes.map((type) => (
             <li key={type.code} className="filter-dropdown__param">
               <div className="filter-dropdown__param-container">
@@ -56,6 +68,14 @@ export const DropDown = ({ setIsOpen, setSelectedTypes, selectedTypes }) => {
             </li>
           ))}
         </ul>
+        <div className="filter-dropdown__title">
+          {country}
+        </div>
+        <Select
+          countries={countries}
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
+        />
       </div>
     </div>
   );

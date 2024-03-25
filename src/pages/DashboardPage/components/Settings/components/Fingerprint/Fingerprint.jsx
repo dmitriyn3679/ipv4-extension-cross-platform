@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Select } from "../../../../../../components/ui/Select";
+import { Select } from "./components/Select";
 import { selectTranslations } from "../../../../../../features/translation";
 import "./Fingerprint.scss";
 import { USER_AGENT_RULE_ID } from "../../../../../../utils/helpers/ruleIds";

@@ -4,10 +4,12 @@ import { IconSvg } from "../../../../../../utils/iconSvg";
 import { getCountryFlag } from "../../../../../../utils/helpers/getCountryFlag";
 import "./SelectedProxy.scss";
 import { useTranslation } from "../../../../../../hooks/useTranslation";
+import { getCountryName } from "../../../../../../utils/helpers/getCountryName";
 
 export const SelectedProxy = () => {
   const { selectedProxy } = useSelector((state) => state.content);
   const { homePage: { chooseProxy } } = useTranslation();
+  const { lang } = useSelector((state) => state.translation);
   
   return (
     <div className="selected-proxy">
@@ -15,8 +17,14 @@ export const SelectedProxy = () => {
         {selectedProxy ? (
           <>
             <div className="selected-proxy__country">
-              <span>{getCountryFlag(selectedProxy?.countryInfo.code)}</span>
-              {selectedProxy?.countryInfo.code}
+              <span className="selected-proxy__country-label">
+                <>
+                  {getCountryFlag(selectedProxy?.countryInfo?.code)}
+                  <span>
+                    {getCountryName(selectedProxy?.countryInfo, lang) || selectedProxy?.countryInfo?.code}
+                  </span>
+                </>
+              </span>
             </div>
             <div className="selected-proxy__ip">
               <span>IP:</span>

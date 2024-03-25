@@ -18,5 +18,13 @@
     &:hover {
       border-color: $lightGreen;
     }
+
+    &--disabled {
+      cursor: default;
+      opacity: 0.64;
+      &:hover {
+        border-color: $borderColor;
+      }
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 .bug {
   width: 460px;
+  margin-bottom: 2px;
 
   &__title {
     @extend %heading;
