@@ -1,7 +1,7 @@
 {
   "homePage": {
     "label": "Главная",
-    "title": "Расширения Proxy IPv4",
+    "title": "Расширение Proxy IPv4",
     "chooseProxy": "Выберите прокси"
   },
   "auth": {

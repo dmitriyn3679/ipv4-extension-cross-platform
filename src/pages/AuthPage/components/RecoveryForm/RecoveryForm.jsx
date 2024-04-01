@@ -1,20 +1,19 @@
 import { useForm } from "react-hook-form";
-import { useSearchParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 import { Input } from "../../../../components/ui/Input";
 import { Button } from "../../../../components/ui/Button";
 import { SingUpHint } from "../../../../components/ui/SingUpHint/SingUpHint";
-import { moveToRegister } from "../../../../utils/helpers/authMoveFuncs";
 import { ApiService } from "../../../../api/ApiService";
 import { errorToast, successToast } from "../../../../utils/helpers/customToast";
 import { useTranslation } from "../../../../hooks/useTranslation";
+import { navigateForRegistration } from "../../../../utils/helpers/navigateForRegistration";
 import "./RecoveryForm.scss";
 
 export function RecoveryForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange"
   });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { lang } = useSelector((state) => state.translation);
   const { notifications, auth, forms } = useTranslation();
 
   const onSubmit = async (formData) => {
@@ -58,7 +57,7 @@ export function RecoveryForm() {
           <Button
             kind="secondary"
             text={auth.signUp}
-            handler={() => moveToRegister(searchParams, setSearchParams)}
+            handler={() => navigateForRegistration(lang)}
           />
         </form>
       </div>

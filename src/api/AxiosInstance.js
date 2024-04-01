@@ -4,7 +4,7 @@ import {tokenName} from "../utils/helpers/browserIdToken";
 export let $api;
 
 $api = axios.create({
-  baseURL: "https://stage.proxy-ipv4.com",
+  baseURL: "https://proxy-ipv4.com",
   withCredentials: true
 });
 
