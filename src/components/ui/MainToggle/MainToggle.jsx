@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "../../../utils/helpers/classNames";
 import { IconSvg } from "../../../utils/iconSvg";
@@ -20,6 +21,13 @@ export const MainToggle = () => {
     selectedUserAgentParams,
     ignoredHosts
   } = useSelector((state) => state.settings);
+  
+  useEffect(() => {
+    if (!selectedProxy) {
+      resetProxyParams();
+      dispatch(setProxyStatus(false))
+    }
+  }, [selectedProxy]);
   
   const hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts];
   
