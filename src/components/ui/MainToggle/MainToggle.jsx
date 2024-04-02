@@ -21,7 +21,7 @@ export const MainToggle = () => {
     ignoredHosts
   } = useSelector((state) => state.settings);
   
-  const hosts = ["stage.proxy-ipv4.com", ...ignoredHosts];
+  const hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts];
   
   const setProxySettings = () => {
     dispatch(setProxyStatus(true))

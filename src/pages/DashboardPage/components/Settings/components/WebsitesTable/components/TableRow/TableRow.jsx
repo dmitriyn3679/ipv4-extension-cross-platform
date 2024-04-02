@@ -61,7 +61,7 @@ export const TableRow = ({ id, site, enabled, selectedSites, selectHandler }) =>
       return;
     }
     
-    let hosts = ["stage.proxy-ipv4.com", ...ignoredHosts];
+    let hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts];
     const currentDomain = siteUrl.split('/')[2]
     
     if (rowEnabled) {

@@ -105,7 +105,7 @@ export const WebsitesTable = () => {
     }
     
     const selectedDomains = selectedHosts.map((siteUrl) => siteUrl.split('/')[2]);
-    const hosts = ["stage.proxy-ipv4.com", ...ignoredHosts]
+    const hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts]
       .filter((domain) => !selectedDomains.includes(domain));
     
     enableProxy(
