@@ -58,7 +58,7 @@ export const MainToggle = () => {
     if (!isProxyEnabled) {
       enableProxy(
         selectedProxy?.innerIp,
-        selectedProxy?.proxyPort,
+        selectedProxy?.proxyType === "IPv6" ? selectedProxy?.port : selectedProxy?.proxyPort,
         selectedProxy?.authLogin,
         selectedProxy?.authPassword,
         hosts,

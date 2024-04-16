@@ -9,7 +9,8 @@ export const contentSlice = createSlice({
   initialState: {
     selectedProxy: null,
     isProxyEnabled: false,
-    isLoaded: false,
+    isProxyStatusLoaded: false,
+    isSelectedProxyLoaded: false,
     websites: {
       isLoaded: false,
       data: [],
@@ -40,14 +41,14 @@ export const contentSlice = createSlice({
   },
   extraReducers: {
     [fetchProxyStatus.pending]: (state) => {
-      state.isLoaded = false;
+      state.isProxyStatusLoaded = false;
     },
     [fetchProxyStatus.fulfilled]: (state, action) => {
       state.isProxyEnabled = action.payload;
-      state.isLoaded = true;
+      state.isProxyStatusLoaded = true;
     },
     [fetchProxyStatus.rejected]: (state) => {
-      state.isLoaded = true;
+      state.isProxyStatusLoaded = true;
     },
     [fetchWebsites.pending]: (state) => {
       state.websites.isLoaded = false;
@@ -61,6 +62,7 @@ export const contentSlice = createSlice({
       state.websites.isLoaded = true;
     },
     [fetchSelectedProxy.fulfilled]: (state, action) => {
+      state.isSelectedProxyLoaded = true;
       state.selectedProxy = action.payload;
     }
   }

@@ -18,11 +18,12 @@ export function DashboardPage() {
   const dispatch = useDispatch();
   const tab = searchParams.get("tab");
 
-  const { isAuth, isLoaded } = useSelector((state) => state.auth)
-  const { isLoaded: contentIsLoaded } = useSelector((state) => state.content)
-
+  const { isAuth, isLoaded: isAuthDataLoaded } = useSelector((state) => state.auth)
+  const { isProxyStatusLoaded, isSelectedProxyLoaded } = useSelector((state) => state.content)
+  const { isSettingsLoaded } = useSelector((state) => state.settings)
+  
   useEffect(() => {
-    if (isLoaded && !isAuth) {
+    if (isAuthDataLoaded && !isAuth) {
       navigate("/auth")
     } else {
       dispatch(fetchProxyStatus())
@@ -30,7 +31,9 @@ export function DashboardPage() {
       dispatch(fetchSettings())
     }
   }, [])
-
+  
+  const isDataLoaded = isProxyStatusLoaded && isSelectedProxyLoaded && isSettingsLoaded;
+  
   return (
     <section className="dashboard">
       <div className="dashboard__menu">
@@ -38,7 +41,7 @@ export function DashboardPage() {
       </div>
       <div className="dashboard__tab-content">
         <div className="dashboard__container">
-          { !contentIsLoaded ? (
+          { !isDataLoaded ? (
             <Loading mainLoader absolute />
           ) : (
             <>

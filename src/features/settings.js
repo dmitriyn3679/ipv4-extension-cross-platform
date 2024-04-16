@@ -8,7 +8,7 @@ export const settingsSlice = createSlice({
     isSpoofUaActive: false,
     isSpoofTimezoneActive: false,
     selectedUserAgentParams: null,
-    isLoaded: false,
+    isSettingsLoaded: false,
     ignoredHosts: []
   },
   reducers: {
@@ -31,6 +31,7 @@ export const settingsSlice = createSlice({
   extraReducers: {
     [fetchSettings.fulfilled]: (state, action) => {
       console.log(action.payload)
+      state.isSettingsLoaded = true;
       state.isSpoofTimezoneActive = action.payload.isSpoofTimezoneActive;
       state.isSpoofLangActive = action.payload.isSpoofLangActive;
       state.selectedUserAgentParams = action.payload.selectedUserAgentParams;
