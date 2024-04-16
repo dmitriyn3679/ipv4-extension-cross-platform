@@ -8,14 +8,16 @@ import { ApiService } from "../../../../api/ApiService";
 import { errorToast } from "../../../../utils/helpers/customToast";
 import { Loading } from "../../../../components/ui/Loading/Loading";
 import { setIgnoredHosts } from "../../../../features/settings";
+import { IconSvg } from "../../../../utils/iconSvg";
 import "./Home.scss";
 
 export const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const { homePage: { title } } = useTranslation();
+  const { homePage: { title, authSupport } } = useTranslation();
   
   const dispatch = useDispatch();
   const { ignoredHosts } = useSelector((state) => state.settings);
+  const { selectedProxy } = useSelector((state) => state.content);
 
   const getHosts = (sites) => {
     if (!sites.length) {
@@ -46,6 +48,9 @@ export const Home = () => {
     })()
   }, [])
   
+  const isUnavailableType = selectedProxy?.protocol === "SOCKS"
+    && selectedProxy?.authType === "login";
+  
   return (
     <div className="home">
       { !isLoaded ? (
@@ -57,10 +62,18 @@ export const Home = () => {
           </div>
           <div className="home__container dashboard-content-container">
             <div className="home__ip-toggle">
-              <MainToggle />
+              <MainToggle isUnavailableType={isUnavailableType} />
             </div>
             <SelectedProxy />
           </div>
+          {isUnavailableType && (
+            <div className="home__unavailable-type">
+              <div className="home__info-icon">
+                <IconSvg tag="info" />
+              </div>
+              <div>{authSupport}</div>
+            </div>
+          )}
         </>
       )}
     </div>

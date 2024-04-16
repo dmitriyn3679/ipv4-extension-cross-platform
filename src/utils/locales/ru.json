@@ -2,7 +2,8 @@
   "homePage": {
     "label": "Главная",
     "title": "Расширение Proxy IPv4",
-    "chooseProxy": "Выберите прокси"
+    "chooseProxy": "Выберите прокси",
+    "authSupport": "Браузер Google Chrome поддерживает аутентификацию для протокола SOCKS только с использованием IP-адресов."
   },
   "auth": {
     "extensionSignIn": "Вход в расширение",

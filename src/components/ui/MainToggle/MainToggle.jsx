@@ -11,7 +11,7 @@ import { LANG_RULE_ID, USER_AGENT_RULE_ID } from "../../../utils/helpers/ruleIds
 import { updateDynamicRule } from "../../../utils/helpers/updateDynamicRule";
 import "./MainToggle.scss";
 
-export const MainToggle = () => {
+export const MainToggle = ({ isUnavailableType }) => {
   const dispatch = useDispatch();
   const { isProxyEnabled } = useSelector((state) => state.content)
   const { selectedProxy } = useSelector((state) => state.content);
@@ -30,6 +30,7 @@ export const MainToggle = () => {
   }, [selectedProxy]);
   
   const hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts];
+  const isSocks = selectedProxy?.protocol === "SOCKS";
   
   const setProxySettings = () => {
     dispatch(setProxyStatus(true))
@@ -51,7 +52,7 @@ export const MainToggle = () => {
   };
   
   const toggleHandler = async () => {
-    if (!selectedProxy) {
+    if (!selectedProxy || isUnavailableType) {
       return;
     }
 
@@ -62,6 +63,7 @@ export const MainToggle = () => {
         selectedProxy?.authLogin,
         selectedProxy?.authPassword,
         hosts,
+        isSocks,
         setProxySettings
       )
     } else {
@@ -76,7 +78,7 @@ export const MainToggle = () => {
         "main-toggle",
         {
           "main-toggle--on": isProxyEnabled,
-          "main-toggle--disabled": !selectedProxy
+          "main-toggle--disabled": !selectedProxy || isUnavailableType
         }
       )}
       onClick={toggleHandler}

@@ -1,6 +1,6 @@
 import {setProxyConfig} from "./setProxyConfig";
 
-export function enableProxy(ip, port, username, password, ignoredHosts, callback) {
+export function enableProxy(ip, port, username, password, ignoredHosts, isSocks, callback) {
   const detail = {
     ip,
     port,
@@ -11,6 +11,6 @@ export function enableProxy(ip, port, username, password, ignoredHosts, callback
   
   
   // eslint-disable-next-line no-undef
-  setProxyConfig(ip, port, ignoredHosts, callback)
+  setProxyConfig(ip, port, ignoredHosts, isSocks, callback)
   chrome.runtime.sendMessage({ type: "set_proxy", proxyDetails: detail });
 }
