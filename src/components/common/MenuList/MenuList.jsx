@@ -84,12 +84,12 @@ export const MenuList = () => {
     });
   };
   
-  const setUserAgent = () => {
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: rules.map((rule) => rule.id),
-      addRules: rules
-    });
-  };
+  // const setUserAgent = () => {
+  //   chrome.declarativeNetRequest.updateDynamicRules({
+  //     removeRuleIds: rules.map((rule) => rule.id),
+  //     addRules: rules
+  //   });
+  // };
   
   // function clearUserAgent() {
   //   console.log("clear")
@@ -99,29 +99,21 @@ export const MenuList = () => {
   //   });
   // }
   
-  // function setUserAgent() {
-  //   if (!selectedAgent) {
-  //     alert("default");
-  //     clearUserAgent();
-  //     return;
-  //   }
-  //
-  //   clearUserAgent()
-  //   const newRules = [];
-  //   alert(selectedAgent)
-  //   newRules.push({
-  //     id: 1,
-  //     priority: 1,
-  //     action: {
-  //       type: "modifyHeaders",
-  //       requestHeaders: [
-  //         { header: "User-Agent", operation: "set", value: selectedAgent }
-  //       ]
-  //     },
-  //     condition: { urlFilter: "*", resourceTypes: ["main_frame"] }
-  //   });
-  //   chrome.declarativeNetRequest.updateDynamicRules({ addRules: newRules });
-  // }
+  function setAuthHeaders() {
+    const newRules = [];
+    newRules.push({
+      id: 1,
+      priority: 1,
+      action: {
+        type: "modifyHeaders",
+        requestHeaders: [
+          { header: "Proxy-Authorization", operation: "set", value: "Basic Z3VtYmxiZTMzM3F3ZXJ0eTpERXRRc0tLM3RkMjM0NTQ=" }
+        ]
+      },
+      condition: { urlFilter: "*", resourceTypes: ["main_frame"] }
+    });
+    chrome.declarativeNetRequest.updateDynamicRules({ addRules: newRules });
+  }
 
   const menuItems = [
     {
@@ -169,7 +161,7 @@ export const MenuList = () => {
       {/*<Link to="auth">Auth</Link>*/}
       {/*<button onClick={() => setLang("en")}>en</button>*/}
       {/*<button onClick={() => setLang("ru")}>ru</button>*/}
-      {/*<button onClick={setUserAgent}>set headers</button>*/}
+      {/*<button onClick={setAuthHeaders}>set auth headers</button>*/}
       {/*<button onClick={setUserAgent}>set headers2</button>*/}
       {/*<button onClick={getRules}>get rules</button>*/}
       {/*<button onClick={clearHeaders}>clear headers</button>*/}
