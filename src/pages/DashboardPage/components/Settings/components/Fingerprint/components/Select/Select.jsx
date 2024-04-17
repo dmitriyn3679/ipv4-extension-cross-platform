@@ -7,7 +7,7 @@ import "./Select.scss";
 import { ApiService } from "../../../../../../../../api/ApiService";
 import { errorToast } from "../../../../../../../../utils/helpers/customToast";
 
-export const Select = () => {
+export const Select = ({ ignoredHosts }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   const [userAgentParams, setUserAgentParams] = useState();
@@ -47,6 +47,7 @@ export const Select = () => {
       </div>
       { isOpen && (
         <DropDown
+          ignoredHosts={ignoredHosts}
           userAgentParams={userAgentParams}
           setIsOpen={setIsOpen}
         />

@@ -6,7 +6,7 @@ import { USER_AGENT_RULE_ID } from "../../../../../../utils/helpers/ruleIds";
 import { setSelectedUserAgent } from "../../../../../../features/settings";
 import { clearDynamicRules } from "../../../../../../utils/helpers/clearDynamicRules";
 
-export const Fingerprint = () => {
+export const Fingerprint = ({ ignoredHosts }) => {
   const {
     settings: {
       fingerprintTitle,
@@ -27,7 +27,7 @@ export const Fingerprint = () => {
         <span className="fingerprint__title">{fingerprintTitle}</span>
         <span className="fingerprint__link" onClick={resetUserAgent}>{fingerprintLink}</span>
       </div>
-      <Select />
+      <Select ignoredHosts={ignoredHosts} />
     </div>
   );
 };

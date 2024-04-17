@@ -8,7 +8,7 @@ import { setLangRule } from "../../../../../../features/settings";
 import { getLangHeader } from "../../../../../../utils/helpers/getLangHeader";
 import "./Parameter.scss";
 
-export const Parameter = ({ label, info }) => {
+export const Parameter = ({ label, info, ignoredHosts }) => {
   const { selectedProxy } = useSelector((state) => state.content);
   const { isProxyEnabled } = useSelector((state) => state.content)
   const { isSpoofLangActive } = useSelector((state) => state.settings);
@@ -37,7 +37,7 @@ export const Parameter = ({ label, info }) => {
       const langHeader = getLangHeader(selectedProxy);
       updateDynamicRule(LANG_RULE_ID, {
         "Accept-Language": langHeader || "en;q=1.0"
-      })
+      }, ignoredHosts)
     }
     
     if (isSpoofLangActive) {

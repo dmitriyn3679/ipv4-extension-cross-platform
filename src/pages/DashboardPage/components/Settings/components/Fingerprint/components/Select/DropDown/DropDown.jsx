@@ -6,7 +6,7 @@ import { updateDynamicRule } from "../../../../../../../../../utils/helpers/upda
 import { USER_AGENT_RULE_ID } from "../../../../../../../../../utils/helpers/ruleIds";
 import "./DropDown.scss";
 
-export const DropDown = ({ userAgentParams, setIsOpen }) => {
+export const DropDown = ({ userAgentParams, setIsOpen, ignoredHosts }) => {
   const dispatch = useDispatch();
   const { selectedUserAgentParams } = useSelector((state) => state.settings);
   const { isProxyEnabled } = useSelector((state) => state.content)
@@ -28,7 +28,7 @@ export const DropDown = ({ userAgentParams, setIsOpen }) => {
     setIsOpen(false);
     
     if (isProxyEnabled) {
-      updateDynamicRule(USER_AGENT_RULE_ID, value?.headers);
+      updateDynamicRule(USER_AGENT_RULE_ID, value?.headers, ignoredHosts);
     }
   };
 

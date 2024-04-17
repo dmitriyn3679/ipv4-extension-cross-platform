@@ -22,6 +22,9 @@ export const Settings = () => {
       websites,
     }
   } = useSelector(selectTranslations);
+  const { ignoredHosts } = useSelector((state) => state.settings);
+  
+  const hosts = ["stage.proxy-ipv4.com", "proxy-ipv4.com", ...ignoredHosts];
 
   return (
     <div className="settings">
@@ -30,13 +33,14 @@ export const Settings = () => {
         <div className="settings__section">
           <div className="settings__label">{fingerprintLabel}</div>
           <div className="settings__fingerprint">
-            <Fingerprint />
+            <Fingerprint ignoredHosts={hosts} />
           </div>
         </div>
         <div className="settings__param">
           <Parameter
             label={languageLabel}
             info={languageInfo}
+            ignoredHosts={hosts}
           />
         </div>
         <div>
