@@ -3,16 +3,28 @@ import { useSelector } from "react-redux";
 import { emailPattern } from "../../../utils/emailPattern";
 import { passwordPattern } from "../../../utils/passwordPattern";
 import { selectTranslations } from "../../../features/translation";
-import "./Input.scss";
 import { IconSvg } from "../../../utils/iconSvg";
+import { UrlPattern } from "../../../utils/urlPattern";
+import "./Input.scss";
 
-export const Input = ({ register = () => {}, type, label, customize = {}, placeholder, errors, name }) => {
+export const Input = ({ register = () => {}, type, label, customize = {}, placeholder, errors, name, checkUrl }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   
   const {
-    forms: { invalidEmail, wrongPasswordLength, wrongPasswordChars }
+    forms: { invalidEmail, wrongPasswordLength, wrongPasswordChars },
+    settings: { hasUrl }
   } = useSelector(selectTranslations);
   
+  const isHasUrl = (value) => {
+    if (value.match(emailPattern)?.length) {
+      return;
+    }
+    
+    if (value.match(UrlPattern)?.length) {
+      return hasUrl;
+    }
+  };
+
   const getValidation = () => {
     const validations = {
       email: {
@@ -23,7 +35,7 @@ export const Input = ({ register = () => {}, type, label, customize = {}, placeh
         pattern: {
           value: emailPattern,
           message: invalidEmail
-        }
+        },
       },
       password: {
         required: {
@@ -59,7 +71,7 @@ export const Input = ({ register = () => {}, type, label, customize = {}, placeh
     
     return type;
   };
-
+  
   return (
     <div className="input" style={customize}>
       <span className="input__label">{label}</span>
@@ -68,11 +80,12 @@ export const Input = ({ register = () => {}, type, label, customize = {}, placeh
         id={type}
         type={getType()}
         placeholder={placeholder}
-        {...register(name || type, getValidation())}
+        {...register(name
+          || type, { ...(checkUrl && { validate: isHasUrl }), ...getValidation() })}
         autoComplete="off"
       />
-      {(errors && errors[type]) && (
-        <div className="input__hint">{errors[type].message}</div>
+      {(errors && errors[type]?.message) && (
+        <div className="input__hint">{errors[type]?.message}</div>
       )}
       {type === "password" && (
         <div className="input__input-icon" onClick={showPasswordHandler}>

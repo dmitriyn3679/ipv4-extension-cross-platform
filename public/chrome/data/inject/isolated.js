@@ -5,7 +5,7 @@ port.dataset.offset = 0;
 document.documentElement.append(port);
 
 self.update = reason => {
-  console.log(self.prefs, reason);
+  // console.log(self.prefs, reason);
   port.dataset.timezone = self.prefs.timezone;
   port.dataset.offset = self.prefs.offset;
 

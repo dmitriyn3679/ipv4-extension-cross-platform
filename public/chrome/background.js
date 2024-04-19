@@ -95,11 +95,11 @@ self.importScripts('/data/offsets.js');
 const uo = () => new Promise(resolve => chrome.storage.local.get({
   'timezone': Intl.DateTimeFormat()?.resolvedOptions().timeZone || 'Etc/GMT'
 }, prefs => {
-  console.log(prefs)
+  // console.log(prefs)
   let offset = 0;
   try {
     offset = uo.engine(prefs.timezone);
-    console.log('in uo', offset)
+    // console.log('in uo', offset)
     chrome.storage.local.set({
       offset
     });
@@ -147,7 +147,7 @@ const resetTimezone = () => {
 chrome.runtime.onMessage.addListener((request, sender, response) => {
   if (request.method === 'spoof-timezone') {
     const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log(userTimezone)
+    // console.log(userTimezone)
     chrome.storage.local.set({
       userTimezone
     }, () => {
@@ -171,7 +171,7 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
       timezone: Intl.DateTimeFormat()?.resolvedOptions().timeZone || 'Etc/GMT',
       offset: 0
     }, prefs => {
-      console.log(prefs);
+      // console.log(prefs);
       
       if (prefs.random) {
         const key = 'random.' + sender.tab.id;
@@ -197,7 +197,7 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
 // chrome.tabs.onRemoved.addListener(tabId => chrome.storage.session.remove('random.' + tabId));
 
 const onCommitted = ({url, tabId, frameId}) => {
-  console.log('on committed react')
+  // console.log('on committed react')
   const send = o => chrome.scripting.executeScript({
     target: {
       tabId,

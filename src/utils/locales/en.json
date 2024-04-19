@@ -46,7 +46,8 @@
     "saveButton": "Save Changes",
     "url": "URL",
     "proxy": "Proxy",
-    "addSite": "Add site"
+    "addSite": "Add site",
+    "hasUrl": "The field contains a URL"
   },
   "bug": {
     "title": "Report a bug",

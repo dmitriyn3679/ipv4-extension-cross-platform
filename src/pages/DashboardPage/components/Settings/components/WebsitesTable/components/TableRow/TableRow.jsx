@@ -7,14 +7,13 @@ import { ApiService } from "../../../../../../../../api/ApiService";
 import { setWebsites } from "../../../../../../../../features/content";
 import { errorToast } from "../../../../../../../../utils/helpers/customToast";
 import { Loading } from "../../../../../../../../components/ui/Loading/Loading";
-import { resetProxyParams } from "../../../../../../../../utils/helpers/resetProxyParams";
 import { enableProxy } from "../../../../../../../../utils/helpers/enableProxy";
 import { updateTimezone } from "../../../../../../../../utils/helpers/updateTimezone";
 import { getLangHeader } from "../../../../../../../../utils/helpers/getLangHeader";
 import { updateDynamicRule } from "../../../../../../../../utils/helpers/updateDynamicRule";
 import { LANG_RULE_ID, USER_AGENT_RULE_ID } from "../../../../../../../../utils/helpers/ruleIds";
 
-export const TableRow = ({ id, site, enabled, selectedSites, selectHandler }) => {
+export const TableRow = ({ id, site, enabled, selectedSites, selectHandler, isCheckboxLoading }) => {
   const {
     websites: { data: websites, dataCount },
     selectedProxy,
@@ -105,6 +104,7 @@ export const TableRow = ({ id, site, enabled, selectedSites, selectHandler }) =>
         <Checkbox
           checked={selectedSites.includes(id)}
           onChange={() => selectHandler(id)}
+          isLoading={isCheckboxLoading}
         />
       </td>
       <td className="websites-table__data websites-table__url">

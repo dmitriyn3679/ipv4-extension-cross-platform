@@ -9,7 +9,8 @@ export function Checkbox({
   onChange,
   disabled,
   register = () => {},
-  partly
+  partly,
+  isLoading = false
 }) {
   return (
     <div className="checkbox">
@@ -19,6 +20,7 @@ export function Checkbox({
           // defaultChecked={Boolean(defaultValue)}
           checked={checked}
           onChange={onChange}
+          disabled={isLoading}
           // disabled={disabled}
           {...register(name)}
         />

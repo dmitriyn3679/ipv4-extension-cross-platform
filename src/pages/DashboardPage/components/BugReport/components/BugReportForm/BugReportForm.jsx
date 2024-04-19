@@ -1,15 +1,15 @@
-import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { Input } from "../../../../../../components/ui/Input";
 import { TextArea } from "../../../../../../components/ui/TextArea";
 import { Button } from "../../../../../../components/ui/Button";
-import { selectTranslations } from "../../../../../../features/translation";
 import { ApiService } from "../../../../../../api/ApiService";
-import "./BugReportForm.scss";
-import { errorToast, successToast } from "../../../../../../utils/helpers/customToast";
+import { errorToast } from "../../../../../../utils/helpers/customToast";
 import { useTranslation } from "../../../../../../hooks/useTranslation";
+import "./BugReportForm.scss";
 
 export const BugReportForm = ({ openModalHandler }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { reset, register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange"
   });
@@ -22,20 +22,23 @@ export const BugReportForm = ({ openModalHandler }) => {
   const onSubmit = async (formData) => {
     const { email, description, text: problem } = formData;
     
+    setIsLoading(true);
     try {
-      // const { status } = await ApiService.sendReport({
-      //   email, description, problem
-      // });
-      //
-      // if (status !== 200) {
-      //   throw new Error();
-      // }
+      const { status } = await ApiService.sendReport({
+        email, description, problem
+      });
+
+      if (status !== 200) {
+        throw new Error();
+      }
       
       // successToast(reportSuccessMessage)
       openModalHandler();
       reset();
     } catch (e) {
       errorToast("Something went wrong")
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -43,6 +46,7 @@ export const BugReportForm = ({ openModalHandler }) => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="bug-form"
+      noValidate={true}
     >
       <div className="bug-form__container">
         <Input
@@ -50,11 +54,14 @@ export const BugReportForm = ({ openModalHandler }) => {
           placeholder={emailPlaceholder}
           errors={errors}
           register={register}
+          checkUrl={true}
         />
         <Input
           type="text"
           placeholder={subjectPlaceholder}
+          errors={errors}
           register={register}
+          checkUrl={true}
         />
       </div>
       <div className="bug-form__textarea">
@@ -64,10 +71,16 @@ export const BugReportForm = ({ openModalHandler }) => {
           placeholder={textAreaProblemText}
           rows={4}
           errors={errors}
+          checkUrl={true}
         />
       </div>
       <div className="bug-form__button">
-        <Button type="submit" kind="main" text={buttonSend} />
+        <Button
+          type="submit"
+          kind="main"
+          text={buttonSend}
+          isLoading={isLoading}
+        />
       </div>
     </form>
   );

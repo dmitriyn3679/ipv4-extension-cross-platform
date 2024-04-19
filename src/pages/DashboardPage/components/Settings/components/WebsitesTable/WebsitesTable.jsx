@@ -25,6 +25,7 @@ export const WebsitesTable = () => {
   const [pagination, setPagination] = useState({ page: 1, size: 10 })
   const [isTableLoading, setIsTableLoading] = useState(false);
   const [isRowLoading, setIsRowLoading] = useState(false);
+  const [isMainCheckboxLoading, setIsMainCheckboxLoading] = useState(false);
   
   const dispatch = useDispatch();
   const { settings: { url, proxy, addSite } } = useTranslation();
@@ -123,6 +124,7 @@ export const WebsitesTable = () => {
       return;
     }
     
+    setIsMainCheckboxLoading(true);
     try {
       const { data, status: getStatus } = await ApiService.getHostsById({ ids: selectedSites })
       const { status: removeStatus } = await ApiService.removeWebsites({ ids: selectedSites })
@@ -137,11 +139,14 @@ export const WebsitesTable = () => {
       restartConfig(data);
     } catch (e) {
       errorToast("Something went wrong")
+    } finally {
+      setIsMainCheckboxLoading(false);
     }
   };
   
   const selectAll = async ({ target: { checked } }) => {
     if (checked) {
+      setIsMainCheckboxLoading(true);
       try {
         const { data, status } = await ApiService.getAllWebsiteIds();
     
@@ -152,6 +157,8 @@ export const WebsitesTable = () => {
         setSelectedSites(data);
       } catch (e) {
         errorToast("Something went wrong")
+      } finally {
+        setIsMainCheckboxLoading(false);
       }
     } else {
       setSelectedSites([]);
@@ -171,7 +178,7 @@ export const WebsitesTable = () => {
           <button
             className="websites-table__icon websites-table__trash-icon"
             onClick={removeWebsites}
-            disabled={!selectedSites.length}
+            disabled={!selectedSites.length || isMainCheckboxLoading}
           >
             <IconSvg tag="trash" />
           </button>
@@ -198,6 +205,7 @@ export const WebsitesTable = () => {
                         checked={dataCount > 0 && dataCount === selectedSites.length}
                         partly={selectedSites.length > 0 && selectedSites.length !== dataCount}
                         onChange={selectAll}
+                        isLoading={isMainCheckboxLoading}
                       />
                     </div>
                   </th>
@@ -234,6 +242,7 @@ export const WebsitesTable = () => {
                         enabled={enabled}
                         selectedSites={selectedSites}
                         selectHandler={selectHandler}
+                        isCheckboxLoading={isMainCheckboxLoading}
                       />
                     ))}
                   </>

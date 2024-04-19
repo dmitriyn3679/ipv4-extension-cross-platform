@@ -1,9 +1,16 @@
 import { useSelector } from "react-redux";
 import { selectTranslations } from "../../../features/translation";
+import { UrlPattern } from "../../../utils/urlPattern";
 import "./TextArea.scss";
 
-export const TextArea = ({ name, cols, rows, placeholder, register, errors }) => {
-  const { forms: { invalidMessage } } = useSelector(selectTranslations);
+export const TextArea = ({ name, cols, rows, placeholder, register, errors, checkUrl }) => {
+  const { forms: { invalidMessage }, settings: { hasUrl } } = useSelector(selectTranslations);
+  
+  const isHasUrl = (value) => {
+    if (value.match(UrlPattern)?.length) {
+      return hasUrl;
+    }
+  };
   
   const validation = {
     required: true,
@@ -11,6 +18,7 @@ export const TextArea = ({ name, cols, rows, placeholder, register, errors }) =>
       value: 10,
       message: invalidMessage,
     },
+    ...(checkUrl && { validate: isHasUrl }),
   }
   
   return (

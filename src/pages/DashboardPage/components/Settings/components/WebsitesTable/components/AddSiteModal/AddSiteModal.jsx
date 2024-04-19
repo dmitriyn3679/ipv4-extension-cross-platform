@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Input } from "../../../../../../../../components/ui/Input";
 import { Button } from "../../../../../../../../components/ui/Button";
@@ -9,6 +10,8 @@ import { addWebsite } from "../../../../../../../../features/content";
 import { useTranslation } from "../../../../../../../../hooks/useTranslation";
 
 export const AddSiteModal = ({ setModalIsOpen }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  
   const { settings: { addSite } } = useTranslation();
   
   const { register, handleSubmit } = useForm({
@@ -29,6 +32,7 @@ export const AddSiteModal = ({ setModalIsOpen }) => {
       return;
     }
     
+    setIsLoading(true);
     try {
       const { data, status } = await ApiService.addWebsite({ site });
       
@@ -39,6 +43,8 @@ export const AddSiteModal = ({ setModalIsOpen }) => {
       setModalIsOpen(false);
     } catch (e) {
       errorToast("Something went wrong")
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -54,7 +60,7 @@ export const AddSiteModal = ({ setModalIsOpen }) => {
             customize={{ marginBottom: 16 }}
             register={register}
           />
-          <Button type="submit" kind="main" text="Add site" />
+          <Button type="submit" kind="main" text={addSite} isLoading={isLoading} />
         </form>
       </div>
     </div>
