@@ -24,6 +24,45 @@ export const Proxies = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   
   useEffect(() => {
+    setPagination({ page: 1, size: ITEMS_PER_PAGE });
+
+    const countryCode = selectedCountry ? {
+      country: selectedCountry?.code
+    } : {};
+    
+    (async () => {
+      setIsLoading(true);
+      try {
+        const {
+          data: { content, totalElements }, status
+        } = await ApiService.getIps(
+          {
+            page: 0,
+            size: ITEMS_PER_PAGE,
+            params: {
+              proxyType: selectedTypes, ...countryCode
+            }
+          }
+        );
+        
+        if (status !== 200) {
+          throw new Error();
+        }
+        
+        setIps(content);
+        setDataCount(totalElements);
+      } catch (e) {
+        errorToast("Something went wrong");
+      } finally {
+        if (!isLoaded) {
+          setIsLoaded(true);
+        }
+        setIsLoading(false);
+      }
+    })()
+  }, [selectedTypes, selectedCountry]);
+  
+  useEffect(() => {
     const countryCode = selectedCountry ? {
       country: selectedCountry?.code
     } : {};
@@ -58,7 +97,7 @@ export const Proxies = () => {
         setIsLoading(false);
       }
     })()
-  }, [pagination.size, pagination.page, selectedTypes, selectedCountry]);
+  }, [pagination.size, pagination.page]);
   
   const handlePageChange = (page) => {
     setPagination((current) => {
