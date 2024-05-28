@@ -1,4 +1,12 @@
 .logout {
   display: flex;
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    path {
+      stroke: #25c660;
+      transition: 0.3s;
+    }
+  }
 }

@@ -6,14 +6,21 @@ import { selectTranslations } from "../../../features/translation";
 import { ApiService } from "../../../api/ApiService";
 import { errorToast } from "../../../utils/helpers/customToast";
 import "./MenuList.scss";
+import { Button } from "../../ui/Button";
+import { navigateForRegistration } from "../../../utils/helpers/navigateForRegistration";
 
 export const MenuList = () => {
   const [searchParams] = useSearchParams();
   const currentTab = searchParams.get("tab") || "";
-  const { homePage, proxies, settings, bug } = useSelector(selectTranslations);
+  
+  const {
+    homePage: { buyProxy },
+    homePage, proxies, settings, bug
+  } = useSelector(selectTranslations);
   
   const [selectedAgent, setSelectedAgent] = useState("");
   const { selectedProxy } = useSelector((state) => state.content);
+  const { lang } = useSelector((state) => state.translation);
   
   const userAgents = {
     Default: "",
@@ -158,6 +165,13 @@ export const MenuList = () => {
           isActive={link === currentTab}
         />
       ))}
+      <Button
+        type="submit"
+        kind="main"
+        text={buyProxy}
+        handler={() => navigateForRegistration(lang)}
+        customize={{ padding: "12px 32px" }}
+      />
       {/*<Link to="auth">Auth</Link>*/}
       {/*<button onClick={() => setLang("en")}>en</button>*/}
       {/*<button onClick={() => setLang("ru")}>ru</button>*/}

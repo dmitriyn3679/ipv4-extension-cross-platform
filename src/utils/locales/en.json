@@ -3,7 +3,8 @@
     "label": "Home Page",
     "title": "Extension Proxy IPv4",
     "chooseProxy": "Choose a proxy",
-    "authSupport": "The Google Chrome browser supports authentication for the SOCKS protocol only through the use of IP addresses."
+    "authSupport": "The Google Chrome browser supports authentication for the SOCKS protocol only through the use of IP addresses.",
+    "buyProxy": "Buy proxies"
   },
   "auth": {
     "extensionSignIn": "Extension Sign In",
@@ -36,6 +37,7 @@
     "label": "Settings",
     "title": "Settings",
     "websites": "Websites",
+    "websitesDescription": "Add and activate sites where you need to use a proxy.",
     "fingerprintLabel": "Browser User-Agent",
     "fingerprintTitle": "Change browser User-Agent:",
     "fingerprintLink": "Reset User-Agent",
@@ -47,7 +49,9 @@
     "url": "URL",
     "proxy": "Proxy",
     "addSite": "Add site",
-    "hasUrl": "The field contains a URL"
+    "hasUrl": "The field contains a URL",
+    "defaultLabel": "Default",
+    "nothingFound": "Nothing found"
   },
   "bug": {
     "title": "Report a bug",

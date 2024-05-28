@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Fingerprint } from "./components/Fingerprint";
 import { Parameter } from "./components/Parameter";
-import { Button } from "../../../../components/ui/Button";
 import { selectTranslations } from "../../../../features/translation";
 import { WebsitesTable } from "./components/WebsitesTable";
 import { Timezone } from "./components/Timezone";
-import { fetchSettings } from "../../../../features/asyncActions/fetchSettings";
 import "./Settings.scss";
 
 export const Settings = () => {
@@ -18,8 +15,8 @@ export const Settings = () => {
       languageLabel,
       languageInfo,
       fingerprintLabel,
-      saveButton,
       websites,
+      websitesDescription
     }
   } = useSelector(selectTranslations);
   const { ignoredHosts } = useSelector((state) => state.settings);
@@ -58,6 +55,7 @@ export const Settings = () => {
         {/*</div>*/}
       </div>
       <div className="settings__title">{websites}</div>
+      <div className="settings__description">{websitesDescription}</div>
       <WebsitesTable />
     </div>
   );

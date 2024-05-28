@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { IconSvg } from "../../../../../../../../utils/iconSvg";
 import { DropDown } from "./DropDown";
 import { classNames } from "../../../../../../../../utils/helpers/classNames";
-import "./Select.scss";
 import { ApiService } from "../../../../../../../../api/ApiService";
 import { errorToast } from "../../../../../../../../utils/helpers/customToast";
+import { useTranslation } from "../../../../../../../../hooks/useTranslation";
+import "./Select.scss";
 
-export const Select = ({ ignoredHosts }) => {
+export const Select = ({ ignoredHosts, filterText, setFilterText }) => {
   const [isOpen, setIsOpen] = useState(false);
   
-  const [userAgentParams, setUserAgentParams] = useState();
-  const { selectedUserAgentParams } = useSelector((state) => state.settings);
+  const { settings: { defaultLabel } } = useTranslation();
   
+  const [userAgentParams, setUserAgentParams] = useState([]);
+
   useEffect(() => {
     (async () => {
       try {
@@ -32,11 +33,21 @@ export const Select = ({ ignoredHosts }) => {
   const selectHandler = () => {
     setIsOpen((current) => !current);
   };
-
+  
+  const filteredUserAgentParams = userAgentParams
+    .filter((userAgent) => userAgent.name.toLowerCase().includes(filterText.toLowerCase()))
+  
   return (
     <div className="select">
-      <div className="select__container" onClick={selectHandler}>
-        <span className="select__value">{selectedUserAgentParams?.name || "Default"}</span>
+      {/*<div className="select__container" onClick={selectHandler}>*/}
+      <div className="select__container">
+        <input
+          className="select__value"
+          placeholder={defaultLabel}
+          onChange={(e) => setFilterText(e.target.value)}
+          onFocus={() => setIsOpen(true)}
+          value={filterText}
+        />
         <IconSvg
           tag="selectIndicator"
           className={classNames(
@@ -48,8 +59,9 @@ export const Select = ({ ignoredHosts }) => {
       { isOpen && (
         <DropDown
           ignoredHosts={ignoredHosts}
-          userAgentParams={userAgentParams}
+          userAgentParams={filteredUserAgentParams}
           setIsOpen={setIsOpen}
+          setFilterText={setFilterText}
         />
       )}
     </div>
