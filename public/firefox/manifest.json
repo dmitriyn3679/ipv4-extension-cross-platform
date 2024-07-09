@@ -20,11 +20,7 @@
   ],
   "host_permissions": ["<all_urls>"],
   "background": {
-    "persistent": false,
-    "scripts": [
-      "data/offsets.js",
-      "background.js"
-    ]
+    "scripts": ["background.js"]
   },
   "icons": {
     "16": "assets/favicons/favicon-16x16-light.png",
@@ -48,6 +44,12 @@
       "resources": ["build/*"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dmitriyn3679@gmail.com",
+      "strict_min_version": "91.1.0"
+    }
+  }
 }
 

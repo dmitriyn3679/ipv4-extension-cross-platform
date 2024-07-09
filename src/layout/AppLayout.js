@@ -49,16 +49,22 @@ function AppLayout() {
   
   return (
     <div className="app">
-      { !isLoaded ? (
-        <Loading absolute mainLoader />
-      ) : (
-        <>
-          <Header />
-          <main>
-            <Outlet />
-          </main>
-        </>
-      )}
+      <>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </>
+      {/*{ !isLoaded ? (*/}
+      {/*  <Loading absolute mainLoader />*/}
+      {/*) : (*/}
+      {/*  <>*/}
+      {/*    <Header />*/}
+      {/*    <main>*/}
+      {/*      <Outlet />*/}
+      {/*    </main>*/}
+      {/*  </>*/}
+      {/*)}*/}
       <ToastContainer
         className="custom-toast"
         position="top-right"

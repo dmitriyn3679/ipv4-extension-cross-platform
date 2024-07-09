@@ -21,7 +21,7 @@ $api.interceptors.response.use(
         // localStorage.removeItem("token");
         // localStorage.removeItem("client_profile");
         resetProxyParams();
-        window.location.href = "/";
+        // window.location.href = "/";
         return null;
       } else {
         return response;

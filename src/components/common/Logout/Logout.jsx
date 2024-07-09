@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IconSvg } from "../../../utils/iconSvg";
 import { errorToast } from "../../../utils/helpers/customToast";
 import { ApiService } from "../../../api/ApiService";
@@ -12,8 +12,13 @@ export const Logout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { notifications } = useTranslation();
+  const { isLoaded: isAuthDataLoaded } = useSelector((state) => state.auth)
   
   const logoutHandler = async () => {
+    if (!isAuthDataLoaded) {
+      return;
+    }
+    
     try {
       const { status } = await ApiService.logout();
       

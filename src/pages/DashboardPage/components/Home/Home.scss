@@ -48,4 +48,17 @@
       stroke: white;
     }
   }
+
+  &__show-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $borderColor;
+    background-color: $buttonBackground;
+    cursor: default;
+    transition: 0.3s;
+  }
 }

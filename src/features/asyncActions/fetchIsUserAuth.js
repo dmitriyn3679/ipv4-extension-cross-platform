@@ -6,7 +6,7 @@ function delay(ms) {
 }
 
 export const fetchIsUserAuth = createAsyncThunk("auth/fetchIsUserAuth", async (_, { rejectWithValue }) => {
-  await delay(50);
+  // await delay(2000);
   
   try {
     const response = await ApiService.checkAuth();

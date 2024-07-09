@@ -7,7 +7,6 @@ import { Home } from "./components/Home/Home";
 import { Proxies } from "./components/Proxies";
 import { BugReport } from "./components/BugReport";
 import { fetchProxyStatus } from "../../features/asyncActions/fetchProxyStatus";
-import { Loading } from "../../components/ui/Loading/Loading";
 import { fetchSelectedProxy } from "../../features/asyncActions/fetchSelectedProxy";
 import { fetchSettings } from "../../features/asyncActions/fetchSettings";
 import "./DashboardPage.scss";
@@ -23,14 +22,19 @@ export function DashboardPage() {
   const { isSettingsLoaded } = useSelector((state) => state.settings)
   
   useEffect(() => {
-    if (isAuthDataLoaded && !isAuth) {
-      navigate("/auth")
-    } else {
-      dispatch(fetchProxyStatus())
-      dispatch(fetchSelectedProxy())
-      dispatch(fetchSettings())
+    if (!isAuthDataLoaded) {
+      return;
     }
-  }, [])
+    
+    if (!isAuth) {
+      navigate("/auth")
+      return;
+    }
+  
+    dispatch(fetchProxyStatus())
+    dispatch(fetchSelectedProxy())
+    dispatch(fetchSettings())
+  }, [isAuthDataLoaded])
   
   const isDataLoaded = isProxyStatusLoaded && isSelectedProxyLoaded && isSettingsLoaded;
   
@@ -41,16 +45,18 @@ export function DashboardPage() {
       </div>
       <div className="dashboard__tab-content">
         <div className="dashboard__container">
-          { !isDataLoaded ? (
-            <Loading mainLoader absolute />
-          ) : (
-            <>
-              { !tab && <Home /> }
-              { tab === "proxies" && <Proxies /> }
-              { tab === "settings" && <Settings /> }
-              { tab === "bugs" && <BugReport /> }
-            </>
-          )}
+          <>
+            { !tab && <Home isDataLoaded={isDataLoaded && isAuthDataLoaded} /> }
+            { tab === "proxies" && <Proxies /> }
+            { tab === "settings" && <Settings /> }
+            { tab === "bugs" && <BugReport /> }
+          </>
+          {/*{ !isDataLoaded || !isAuthDataLoaded ? (*/}
+          {/*  // <Loading mainLoader absolute />*/}
+          {/*  <HomeLoader />*/}
+          {/*) : (*/}
+          {/*  */}
+          {/*)}*/}
         </div>
       </div>
       
