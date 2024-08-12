@@ -27,9 +27,9 @@ const router = createHashRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-console.log = () => {}
-console.error = () => {}
-console.debug = () => {}
+// console.log = () => {}
+// console.error = () => {}
+// console.debug = () => {}
 
 root.render(
   <React.StrictMode>

@@ -3,7 +3,7 @@
     "label": "Home Page",
     "title": "Extension Proxy IPv4",
     "chooseProxy": "Choose a proxy",
-    "authSupport": "The Google Chrome browser supports authentication for the SOCKS protocol only through the use of IP addresses.",
+    "authSupport": "The _ browser supports authentication for the SOCKS protocol only through the use of IP addresses.",
     "buyProxy": "Buy proxies"
   },
   "auth": {

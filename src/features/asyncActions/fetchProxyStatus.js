@@ -9,6 +9,8 @@ const getProxyStatus = async (config) => {
       return config.value.mode === "pac_script" && proxySettings?.isProxyConfigEnabled;
     case "firefox":
       return config.value.proxyType === "autoConfig" && proxySettings?.isProxyConfigEnabled;
+    default:
+      return config.value.mode === "pac_script" && proxySettings?.isProxyConfigEnabled;
   }
 };
 

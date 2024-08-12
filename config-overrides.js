@@ -12,6 +12,10 @@ module.exports = function override(config, env) {
       from: 'public/firefox',
       to: '',
     },
+    opera: {
+      from: 'public/opera',
+      to: '',
+    }
   }
 
   config.plugins.push(

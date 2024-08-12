@@ -10,6 +10,7 @@ import { errorToast } from "../../../../utils/helpers/customToast";
 import { setIgnoredHosts } from "../../../../features/settings";
 import { IconSvg } from "../../../../utils/iconSvg";
 import "./Home.scss";
+import { currentBrowser } from "../../../../utils/currentBrowser";
 
 const customColorFore = "#555555";
 const customColorBack = "#333333";
@@ -62,6 +63,16 @@ export const Home = ({ isDataLoaded }) => {
   const isUnavailableType = selectedProxy?.protocol === "SOCKS"
     && selectedProxy?.authType === "login";
   
+  const getBrowserName = () => {
+    const browsers = {
+      chrome: "Google Chrome",
+      firefox: "Mozilla Firefox",
+      opera: "Opera"
+    };
+    
+    return browsers[currentBrowser] || "";
+  };
+  
   return (
     <div className="home">
       <div className="home__title">
@@ -97,7 +108,7 @@ export const Home = ({ isDataLoaded }) => {
           <div className="home__info-icon">
             <IconSvg tag="info" />
           </div>
-          <div>{authSupport}</div>
+          <div>{authSupport.replace("_", getBrowserName())}</div>
         </div>
       )}
     </div>

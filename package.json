@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "build:chrome": "INLINE_RUNTIME_CHUNK=false REACT_APP_BROWSER_CORE=chrome react-app-rewired build",
     "build:firefox": "INLINE_RUNTIME_CHUNK=false REACT_APP_BROWSER_CORE=firefox react-app-rewired build",
+    "build:opera": "INLINE_RUNTIME_CHUNK=false REACT_APP_BROWSER_CORE=opera react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
