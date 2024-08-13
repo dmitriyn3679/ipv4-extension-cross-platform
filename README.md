@@ -1,6 +1,6 @@
-# Proxy-IPv4 Firefox Extension
+# Proxy-IPv4
 
-This Firefox extension manages IP addresses purchased on the Proxy-IPv4 service.
+This extension manages IP addresses purchased on the Proxy-IPv4 service.
 
 ## Build Instructions
 
