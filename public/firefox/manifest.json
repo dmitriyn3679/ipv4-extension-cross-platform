@@ -1,7 +1,7 @@
 {
   "name": "Proxy-IPv4",
   "description": "The addon is designed to manage IP addresses purchased on the Proxy-IPv4 service.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",

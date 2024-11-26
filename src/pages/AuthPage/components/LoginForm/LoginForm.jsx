@@ -23,9 +23,9 @@ export function LoginForm() {
   });
 
   const onSubmit = async (formData) => {
-    const { email: username, password } = formData;
+    const { email: username, password, remember: rememberMe } = formData;
     try {
-      const { status } = await ApiService.login({ username, password });
+      const { status } = await ApiService.login({ username, password, rememberMe });
 
       if (status !== 200) {
         throw notifications.loginError
