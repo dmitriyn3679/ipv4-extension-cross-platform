@@ -3,7 +3,6 @@ import { Header } from "../components/common/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchIsUserAuth} from "../features/asyncActions/fetchIsUserAuth";
-import {Loading} from "../components/ui/Loading/Loading";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {tokenName} from "../utils/helpers/browserIdToken";
@@ -12,6 +11,7 @@ import {ApiService} from "../api/ApiService";
 import {errorToast} from "../utils/helpers/customToast";
 import { UAParser } from 'ua-parser-js';
 import "./AppLayout.scss";
+import {fetchConfig} from "../features/asyncActions/fetchConfig";
 
 const checkBrowserId = async () => {
   const browserIdToken = localStorage.getItem(tokenName);
@@ -44,6 +44,7 @@ function AppLayout() {
   
   useEffect(() => {
     checkBrowserId();
+    dispatch(fetchConfig());
     dispatch(fetchIsUserAuth());
   }, []);
   

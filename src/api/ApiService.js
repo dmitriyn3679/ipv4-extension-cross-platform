@@ -5,6 +5,10 @@ export class ApiService {
     return $api.post('/browser-addon/v1/login', null, { params })
   }
   
+  static getConfig() {
+    return $api.get("/browser-addon/v1/config");
+  }
+  
   static checkAuth() {
     return $api.get('/browser-addon/v1/authenticated')
   }

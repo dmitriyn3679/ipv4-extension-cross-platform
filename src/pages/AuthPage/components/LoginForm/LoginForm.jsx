@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useRef } from "react";
 import { Input } from "../../../../components/ui/Input";
 import { Checkbox } from "../../../../components/ui/Checkbox";
 import { Button } from "../../../../components/ui/Button";
@@ -10,6 +11,7 @@ import { setIsAuthUser } from "../../../../features/auth";
 import { errorToast } from "../../../../utils/helpers/customToast";
 import { useTranslation } from "../../../../hooks/useTranslation";
 import { navigateForRegistration } from "../../../../utils/helpers/navigateForRegistration";
+import { CfCaptcha } from "../../../../components/common/CfCaptcha/CfCaptcha";
 import "./LoginForm.scss";
 
 export function LoginForm() {
@@ -18,14 +20,28 @@ export function LoginForm() {
   const dispatch = useDispatch();
   const { notifications, forms, auth } = useTranslation();
   
+  const cfCaptchaRef = useRef();
+  
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange"
   });
 
   const onSubmit = async (formData) => {
     const { email: username, password, remember: rememberMe } = formData;
+  
+    let token = "";
+  
+    if (cfCaptchaRef?.current) {
+      token = await cfCaptchaRef.current?.getResponsePromise();
+    }
+    
     try {
-      const { status } = await ApiService.login({ username, password, rememberMe });
+      const { status } = await ApiService.login({
+        username,
+        password,
+        rememberMe,
+        captchaToken: token
+      });
 
       if (status !== 200) {
         throw notifications.loginError
@@ -80,6 +96,7 @@ export function LoginForm() {
               {forms.forgotPass}
             </Link>
           </div>
+          <CfCaptcha ref={cfCaptchaRef} setCfToken={() => {}} />
           <Button
             type="submit"
             kind="main"

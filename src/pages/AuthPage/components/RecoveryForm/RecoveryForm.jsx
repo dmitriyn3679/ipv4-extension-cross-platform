@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 import { Input } from "../../../../components/ui/Input";
 import { Button } from "../../../../components/ui/Button";
 import { SingUpHint } from "../../../../components/ui/SingUpHint/SingUpHint";
@@ -8,6 +9,7 @@ import { errorToast, successToast } from "../../../../utils/helpers/customToast"
 import { useTranslation } from "../../../../hooks/useTranslation";
 import { navigateForRegistration } from "../../../../utils/helpers/navigateForRegistration";
 import "./RecoveryForm.scss";
+import { CfCaptcha } from "../../../../components/common/CfCaptcha/CfCaptcha";
 
 export function RecoveryForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -15,12 +17,23 @@ export function RecoveryForm() {
   });
   const { lang } = useSelector((state) => state.translation);
   const { notifications, auth, forms } = useTranslation();
+  
+  const cfCaptchaRef = useRef();
 
   const onSubmit = async (formData) => {
     const { email } = formData;
+  
+    let token = "";
+  
+    if (cfCaptchaRef?.current) {
+      token = await cfCaptchaRef.current?.getResponsePromise();
+    }
     
     try {
-      const { data, status } = await ApiService.recoveryPassword({ email })
+      const { data, status } = await ApiService.recoveryPassword({
+        email,
+        captchaToken: token
+      })
       if (status !== 200) {
         throw new Error();
       }
@@ -47,6 +60,7 @@ export function RecoveryForm() {
           <p className="recovery__info">
             {auth.recoveryInfo}
           </p>
+          <CfCaptcha ref={cfCaptchaRef} setCfToken={() => {}} />
           <Button
             type="submit"
             kind="main"
